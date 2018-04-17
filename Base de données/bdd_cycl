@@ -1,23 +1,163 @@
 --
 -- Base de données :  `incident_cycliste`
 --
-CREATE DATABASE IF NOT EXISTS `incident_cycliste` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `incident_cycliste`;
+CREATE DATABASE IF NOT EXISTS incident_cycliste DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE incident_cycliste;
 
-CREATE TABLE `incident_cycliste`.`Utilisateur` ( `idUtilisateur` INT NOT NULL AUTO_INCREMENT , `login` VARCHAR(20) NOT NULL , `mdp` VARCHAR(20) NOT NULL , `surnom` VARCHAR(20) NOT NULL , PRIMARY KEY (`idUtilisateur`)) ENGINE = InnoDB;
+--
+-- Structure de la table `utilisateur`
+--
 
-CREATE TABLE `incident_cycliste`.`Incident` ( `idIncident` INT NOT NULL AUTO_INCREMENT , `niveauUrgence` VARCHAR(20) NOT NULL , `description` TEXT NOT NULL , `cloture` BOOLEAN NULL DEFAULT FALSE , `raisonCloture` ENUM('nullite','reparation') NULL DEFAULT NULL , `longLat` VARCHAR(10) NOT NULL , `idUtilisateur` INT NOT NULL , `idPortionRoute` INT NOT NULL , `idCategorie` INT NOT NULL , PRIMARY KEY (`idIncident`)) ENGINE = InnoDB;
 
-CREATE TABLE `incident_cycliste`.`Categorie` ( `idCategorie` INT NOT NULL AUTO_INCREMENT , `nomCategorie` ENUM('revetement','travaux','permanent','trafic','autre') NOT NULL , PRIMARY KEY (`idCategorie`)) ENGINE = InnoDB;
 
-CREATE TABLE `incident_cycliste`.`sousCategorie` ( `idSousCategorie` INT(20) NOT NULL AUTO_INCREMENT , `nomSousCategorie` VARCHAR(60) NOT NULL , `idCategorie` INT NOT NULL , PRIMARY KEY (`idSousCategorie`)) ENGINE = InnoDB;
+CREATE TABLE incident_cycliste.Utilisateur ( 
+    idUtilisateur INT NOT NULL AUTO_INCREMENT , 
+    login VARCHAR(20) NOT NULL ,
+    mdp VARCHAR(20) NOT NULL , 
+    surnom VARCHAR(20) NOT NULL , 
+    PRIMARY KEY (idUtilisateur)
+    ) ENGINE = InnoDB CHARSET=utf8;
+    
+    
+--
+-- Structure de la table `categorie`
+--
 
-CREATE TABLE `incident_cycliste`.`Analyste` ( `idUtilisateurAnalyste` INT NOT NULL , PRIMARY KEY (`idUtilisateurAnalyste`)) ENGINE = InnoDB;
+CREATE TABLE incident_cycliste.Categorie ( 
+    idCategorie INT NOT NULL AUTO_INCREMENT , 
+    nomCategorie VARCHAR(20) NOT NULL , 
+    PRIMARY KEY (idCategorie)
+    ) ENGINE = InnoDB CHARSET=utf8;
 
-CREATE TABLE `incident_cycliste`.`Administrateur` ( `idUtilisateurAdministrateur` INT(11) NOT NULL , PRIMARY KEY (`idUtilisateurAdministrateur`)) ENGINE = InnoDB;
+--
+-- Structure de la table `sousCategorie`
+--
 
-CREATE TABLE `incident_cycliste`.`Commune` ( `idCommune` INT(11) NOT NULL , `nom` VARCHAR(20) NOT NULL , PRIMARY KEY (`idCommune`)) ENGINE = InnoDB;
 
-CREATE TABLE `incident_cycliste`.`Quartier` ( `idQuartier` INT(11) NOT NULL , `nom` VARCHAR(20) NOT NULL , `idCommune` INT(11) NOT NULL , PRIMARY KEY (`idQuartier`)) ENGINE = InnoDB;
+CREATE TABLE incident_cycliste.sousCategorie ( 
+    idSousCategorie INT(20) NOT NULL AUTO_INCREMENT , 
+    nomSousCategorie VARCHAR(60) NOT NULL , 
+    idCategorie INT , 
+    PRIMARY KEY (idSousCategorie),
+    FOREIGN KEY (idCategorie) REFERENCES Categorie (idCategorie) ON DELETE SET NULL ON UPDATE CASCADE
+    ) ENGINE = InnoDB CHARSET=utf8;
 
-CREATE TABLE `incident_cycliste`.`PortionRoute` ( `idPortionRoute` INT(11) NOT NULL , `nom` VARCHAR(20) NOT NULL , `idQuartier` INT(11) NOT NULL , PRIMARY KEY (`idPortionRoute`)) ENGINE = InnoDB;
+
+
+
+--
+-- Structure de la table `commune`
+--
+
+CREATE TABLE incident_cycliste.Commune (
+    idCommune INT(11) NOT NULL AUTO_INCREMENT,
+    nom VARCHAR(20) NOT NULL ,
+    PRIMARY KEY (`idCommune`)
+    ) ENGINE = InnoDB CHARSET=utf8;
+
+
+
+
+--
+-- Structure de la table `quartier`
+--
+CREATE TABLE incident_cycliste.Quartier( 
+    idQuartier INT(11) NOT NULL AUTO_INCREMENT, 
+    nom VARCHAR(20) NOT NULL , 
+    idCommune INT(11) , 
+    PRIMARY KEY (idQuartier),
+    FOREIGN KEY (idCommune) REFERENCES Commune(idCommune) ON DELETE CASCADE ON UPDATE CASCADE
+    ) ENGINE = InnoDB CHARSET=utf8;
+
+
+
+--
+-- Structure de la table `incident`
+--
+
+
+CREATE TABLE incident_cycliste.Incident ( 
+    idIncident INT NOT NULL AUTO_INCREMENT , 
+    niveauUrgence VARCHAR(20) NOT NULL , 
+    description TEXT NOT NULL , 
+    cloture BOOLEAN NULL DEFAULT FALSE , 
+    raisonCloture ENUM('nullite','reparation') NULL DEFAULT NULL , 
+    longLat VARCHAR(10) NOT NULL , 
+    idUtilisateur INT , 
+    idSousCategorie INT ,
+    idQuartier INT , 
+    PRIMARY KEY (idIncident),
+    FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur (idUtilisateur) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idSousCategorie) REFERENCES sousCategorie (idSousCategorie) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idQuartier) REFERENCES Quartier (idQuartier) ON DELETE SET NULL ON UPDATE CASCADE
+    ) ENGINE = InnoDB CHARSET=utf8;
+    
+
+
+
+--
+-- Structure de la table `analyste`
+--
+
+CREATE TABLE incident_cycliste.Analyste( 
+    idUtilisateurAnalyste INT NOT NULL ,
+    PRIMARY KEY (idUtilisateurAnalyste),
+    FOREIGN KEY (idUtilisateurAnalyste) REFERENCES Utilisateur (idUtilisateur) ON DELETE CASCADE ON UPDATE CASCADE
+    ) ENGINE = InnoDB CHARSET=utf8;
+
+--
+-- Structure de la table `administrateur`
+--
+
+CREATE TABLE incident_cycliste.Administrateur ( 
+    idUtilisateurAdministrateur INT(11) NOT NULL , 
+    PRIMARY KEY (idUtilisateurAdministrateur),
+    FOREIGN KEY (idUtilisateurAdministrateur) REFERENCES Analyste (idUtilisateurAnalyste) ON DELETE CASCADE ON UPDATE CASCADE
+    ) ENGINE = InnoDB CHARSET=utf8;
+
+
+
+INSERT INTO Utilisateur (login, mdp, surnom) values 
+('admin','admin','Dieu'),
+('Adrien','adrien','hésitateur'),
+('Allan','allan','intégrateur'),
+('Matthias', 'matthias', 'dérivateur'),
+('Armand', 'armand','branleur');
+
+INSERT INTO Analyste (idUtilisateurAnalyste) values 
+(1),
+(2);
+
+INSERT INTO Administrateur (idUtilisateurAdministrateur) values 
+(1);
+
+
+INSERT INTO Categorie (idCategorie, nomCategorie) values
+(1,'Revêtement'),
+(2,'Travaux'),
+(3,'Permanent'),
+(4,'Trafic'),
+(5,'Autre');
+
+INSERT INTO sousCategorie (nomSousCategorie,idCategorie) values
+('trou dans la chaussée',1),
+('chaussée déformée',1),
+('objet sur la chausée',1),
+('chausée glissante',1),
+('piste cyclable inutilisable',2),
+('danger',2),
+('lieu interdit pour les cyclistes',3),
+('lieu dangereux pour les cyclistes',3),
+('embouteillage',4),
+('accident de la route',4);
+
+INSERT INTO Commune (nom) values
+('Toulouse'),
+('Blagnac');
+
+INSERT INTO Quartier (nom,idCommune) values
+('mirail',2),
+('rangeuil',1);
+
+INSERT INTO Incident (niveauUrgence, description, longLat, idUtilisateur,idSousCategorie, idQuartier) values 
+('bas','je suis tombé', '42\'50, 0\'2','4','10','2');
