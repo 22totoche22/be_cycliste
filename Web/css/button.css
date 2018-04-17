@@ -1,3 +1,4 @@
+
 .button
 {
     background: #ed786a;
@@ -14,7 +15,7 @@
     text-decoration: none;
 }
 
-    .button:hover
-    {
-        opacity: 0.5;
-    }
+.button:hover
+{
+    opacity: 0.5;
+}

@@ -1,95 +1,113 @@
-@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700");
+/*@charset 'UTF-8';*/
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700");
 
 body
-{
-    background: #fff;
-    font-weight: 300;
-    color: #777;
-    line-height: 1.65em;
-    font-size: 16px;
-    text-align: center;
-    font-family: 'Source Sans Pro';
-}
+  {
+     background: #fff;
+     font-family: 'Source Sans Pro';
+     font-weight: 300;
+     color: #777;
+     line-height: 1.65em;
+     font-size: 18px;
+     text-align: center;
+  }
 
-
+/*en-tete*/
 
 header
 {
-    border-bottom: 2px solid #e5e5e5;
-    padding:100px 0;
-    margin:0 50px;
+  border-bottom: 2px solid #e5e5e5;
+  padding:100px 0;
+  margin:0 50px;
 }
 
-header h1
+header#top2
 {
-    text-transform: uppercase;
-    font-weight: 700;
-    color: #ed786a;
-    font-size: 2.5em;
-    letter-spacing: 15px;
-    text-shadow: 0.05em 0.075em 0 rgba(0,0,0,0.1);
-    font-family: 'Arvo';
-
-}
-
-header p
-{
-    text-transform: uppercase;
-    font-weight: 400;
-    color: #888;
-}
-
-
-
-
-footer
-{
-    width:100%;
-    background-color: #f0f0f0;
-    border-top: 2px solid #e5e5e5;
     padding:50px 0;
-    color: #666;
 }
+	header h1
+	{
+   	text-transform: uppercase;
+   	font-weight: 700;
+   	color: #ed786a;
+   	text-shadow: 0.05em 0.075em 0 rgba(0,0,0,0.1);
+   	font-size: 2.5em;
+   	letter-spacing: 15px;
+	}
+
+	header p
+	{
+  	text-transform: uppercase;
+  	font-weight: 400;
+  	color: #888;
+	}
 
 
 
+/********************************************************************************
+ section                                                                    
+********************************************************************************/
 section
 {
-    border-top: 2px solid #e5e5e5;
-    border-bottom: 2px solid #e5e5e5;
-    margin:10px 50px;
-    text-align: center;
-    max-width: 100%;
+  border-top: 2px solid #e5e5e5;
+  border-bottom: 2px solid #e5e5e5;
+  margin:10px 50px;
+  text-align: center;
 }
 
-    section h2
-    {
-        font-weight: 600;
-        font-variant:small-caps;
-        color: #888;
-        font-size:1.5em;
-        letter-spacing: 12px;
-        margin:50px 0;
-    }
+	section h2
+	{
+            font-weight: 600;
+	  font-variant:small-caps;
+	  color: #888;
+	  font-size:1.5em;
+	  letter-spacing: 12px;
+	  margin:50px 0;
+	}
+
+	section article
+	{
+	   margin:10px 15px;
+	}
+	
+	    section article div.S1
+	    {
+	        margin-top:60px;
+	    }
+
+	    section article img
+	    {
+		    width:100%;
+		    border: solid 6px #ebebeb;
+	    }
+
+        section#contacter,
+        section#connecter
+        {
+            background-color: #f0f0f0;
+            margin:0;
+        }
 
 
-    section article img {width: 100%;}
-    
-    section#contacter
-		{
-     		background-color: #f0f0f0;
-    		margin:0;
-    		border: 0;
-    		border-top: 2px solid #e5e5e5;
-    		padding: 50px 0;
-		}
-		
-		section#contacter h2
-		{
-			font-weight: 600;
-			text-transform: uppercase;
-			color:#666;
-		}
+div.search input
+{
+    width:250px;
+    float: right;
+    margin-bottom: 20px;
+}
 
+
+/********************************************************************************
+ footer                                                                
+********************************************************************************/
+footer
+{
+  	width:100%;
+	color: white;
+  	background-color: #666;
+  	border-top: 2px solid #e5e5e5;
+  	padding:50px 10px;
+
+}
 
 
