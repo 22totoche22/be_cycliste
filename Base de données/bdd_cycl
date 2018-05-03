@@ -122,7 +122,6 @@ INSERT INTO Utilisateur (login, mdp, surnom) values
 ('Adrien','adrien','hésitateur'),
 ('Allan','allan','intégrateur'),
 ('Matthias', 'matthias', 'dérivateur'),
-('Armand', 'armand','branleur');
 
 INSERT INTO Analyste (idUtilisateurAnalyste) values 
 (1),

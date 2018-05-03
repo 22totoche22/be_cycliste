@@ -18,7 +18,7 @@ def menu(chemin=''):
         <ul>
             
         '''
-    if "nom" in Session():
+    if "login" in Session():
          menu+='''
             <a href="'''+chemin+'''/python/connecter.py/deconnecter">
                 Se déconnecter
@@ -46,8 +46,8 @@ def menu(chemin=''):
     </nav>
    '''
 
-    if "nom" in Session():
-          menu+="<div>Bonjour "+Session()["prenom"]+" "+Session()["nom"]+"</div>"
+    if "login" in Session():
+          menu+="<div>Bonjour "+Session()["surnom"]+"</div>"
 
 
     return menu
