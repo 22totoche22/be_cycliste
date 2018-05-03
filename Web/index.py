@@ -7,6 +7,7 @@ def index():
     result += template.menu(chemin)
     result += template.titre("Incidents Cyclistes",1)
     result += corps()
+    result += liens()
     result += template.footer(chemin)
     return result
 
@@ -19,7 +20,9 @@ def corps():
                 <div class="col-12 col-md-4 col-sm-6" >
                     <article>
                         <div>
+                            <a href="'''+chemin+'''/python/incidents.py">
                             <h3>Incidents</h3>
+                            </a>
                             <p>Texte</p>
                         </div>
                     </article>
@@ -29,7 +32,7 @@ def corps():
 
                     <article>
                         <div>
-                            <a href="'''+chemin+'''/python/Carte.py">
+                            <a href="'''+chemin+'''/python/carte.py">
                             <h3>Carte</h3>
                             </a>        
                             <p>Texte</p>
@@ -51,4 +54,28 @@ def corps():
     '''
     return vcorps
 
+def liens(chemin=''):
+    liens = '''
+    <section id="liens">
+        <article>
+            <div>
+                <h4>Quelques liens utiles</h4>
+                <nav>
+                    <ul>
+                        <li>
+                        Lien 1
+                        </li>
+                        <li>
+                        Lien 2
+                        </li>
+                        <li>
+                        Lien 3
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </article>
+    </section>
+        '''
 
+    return liens
