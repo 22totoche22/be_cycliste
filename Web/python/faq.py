@@ -14,7 +14,7 @@ def faq():
     vfaq = '''
         <section id="faq">
         <h1>Comment est votre blanquette ?</h1>
-        <p>Elle est bonne<p>
+        <p>La blanquette est bonne<p>
         <h1>On me dit le plus grand bien de vos harengs-pomme à l'huile </h1>
         <p>Le patron vous en apportera un ramequin, vous vous ferez une idée<p>
         

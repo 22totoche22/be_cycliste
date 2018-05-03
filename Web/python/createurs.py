@@ -15,25 +15,25 @@ def createurs():
         <section id="createurs">
 
             <div class="row">
-                <div class="col-ç col-md-3 col-sm-4" >
+                <div class="col-8 col-md-3 col-sm-4" >
                     <article>
                         <div>
                             <h3>Adrien Caillet</h3>
-                            <img src="C:/karrigell/www/images/adrien.jpg alt="adrien" title="Adrien Caillet"/>
+                            <img src="C:/karrigell/www/images/adrien.jpg" alt="adrien" title="Adrien Caillet"/>
                         </div>
                     </article>
                 </div>
                 
-                <div class="col-ç col-md-3 col-sm-4" >
+                <div class="col-8 col-md-3 col-sm-4" >
                     <article>
                         <div>
                             <h3>Allan Denis</h3>
-                            <img src="C:/karrigell/www/images/allan.jpg alt="allan" title="Allan Denis"/>
+                            <img src="C:/karrigell/www/images/allan.jpg" alt="allan" title="Allan Denis"/>
                         </div>
                     </article>
                 </div>
                 
-                <div class="col-ç col-md-3 col-sm-4" >
+                <div class="col-8 col-md-3 col-sm-4" >
                     <article>
                         <div>
                             <h3>Matthias Petit</h3>
@@ -41,7 +41,7 @@ def createurs():
                     </article>
                 </div>
                 
-                <div class="col-ç col-md-3 col-sm-4" >
+                <div class="col-8 col-md-3 col-sm-4" >
                     <article>
                         <div>
                             <h3>Armand Vergnes</h3>
