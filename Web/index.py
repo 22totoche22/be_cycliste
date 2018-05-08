@@ -13,45 +13,90 @@ def index():
 
 
 def corps():
-    vcorps = '''
-        <section id="corps">
-
-            <div class="row">
-                <div class="col-12 col-md-4 col-sm-6" >
-                    <article>
-                        <div>
-                            <a href="'''+chemin+'''/python/incidents.py">
-                            <h3>Incidents</h3>
-                            </a>
-                            <p>Texte</p>
-                        </div>
-                    </article>
+    if "login" in Session():
+        vcorps = '''
+    
+            <section id="corps">
+    
+                <div class="row">
+                    <div class="col-12 col-md-4 col-sm-6" >
+                        <article>
+                            <div>
+                                <a href="'''+chemin+'''/python/saisieCarte.py">
+                                <h3>Incidents</h3>
+                                </a>
+                                <p>Reporter un incident</p>
+                            </div>
+                        </article>
+                    </div>
+    
+                    <div class="col-12 col-md-4 col-sm-6" >
+    
+                        <article>
+                            <div>
+                                
+                                <a href="'''+chemin+'''/python/carte.py">
+                                <h3>Carte</h3>
+                                </a>        
+                                <p>Carte des incidents</p>
+                            </div>
+    
+                        </article>
+                    </div>
+    
+                    <div class="col-12 col-md-4 col-sm-6"  >
+                        <article>
+                            <div>
+                                <h3>Statistiques</h3>
+                                <p>Texte </p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
+            </section>
+        '''
+    else :
+        vcorps = '''
 
-                <div class="col-12 col-md-4 col-sm-6" >
+                    <section id="corps">
 
-                    <article>
-                        <div>
-                            <a href="'''+chemin+'''/python/carte.py">
-                            <h3>Carte</h3>
-                            </a>        
-                            <p>Texte</p>
+                        <div class="row">
+                            <div class="col-12 col-md-4 col-sm-6" >
+                                <article>
+                                    <div>
+                                        <a href="''' + chemin + '''/python/connecter.py">
+                                        <h3>Incidents</h3>
+                                        </a>
+                                        <p>Reporter un incident</p>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-sm-6" >
+
+                                <article>
+                                    <div>
+
+                                        <a href="''' + chemin + '''/python/carte.py">
+                                        <h3>Carte</h3>
+                                        </a>        
+                                        <p>Carte des incidents</p>
+                                    </div>
+
+                                </article>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-sm-6"  >
+                                <article>
+                                    <div>
+                                        <h3>Statistiques</h3>
+                                        <p>Texte </p>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
-
-                    </article>
-                </div>
-
-                <div class="col-12 col-md-4 col-sm-6"  >
-                    <article>
-                        <div>
-                            <h3>Statistiques</h3>
-                            <p>Texte </p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-    '''
+                    </section>
+                '''
     return vcorps
 
 def liens(chemin=''):
