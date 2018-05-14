@@ -19,14 +19,14 @@ form textarea
     background: #ffffff;
     box-shadow: inset 2px 2px 0px 0px rgba(0,0,0,0.1);
     border-radius: 4px;
-    line-height: 1.25em;
-    padding: 1em;
+    line-height: 1.1em;
+    padding: 0.9em;
     margin-bottom: 1em;
 }
 
 form textarea
 {
-    min-height: 11em;
+    min-height: 8em;
 }
 
 ::-webkit-input-placeholder,
@@ -37,4 +37,4 @@ input:-moz-placeholder,
     color: #555 !important;
 }
 
-form textarea {min-height: 11em;}
+form textarea {min-height: 8em;}

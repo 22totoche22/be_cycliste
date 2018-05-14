@@ -1,12 +1,15 @@
 /*@charset 'UTF-8';*/
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700");
+@import url("https://fonts.googleapis.com/css?family=Hind|Merriweather+Sans|Ubuntu+Condensed");
 
 body
   {
-     background: #fff;
-     font-family: 'Source Sans Pro';
+     background: url("../images/fond4.jpg");
+     background-attachment: fixed;
+     background-position: center;
+     background-size: cover;
+     font-family: 'Hind';
      font-weight: 300;
-     color: #777;
+     color: #fff;
      line-height: 1.65em;
      font-size: 18px;
      text-align: center;
@@ -16,7 +19,7 @@ body
 
 header
 {
-  border-bottom: 2px solid #e5e5e5;
+
   padding:100px 0;
   margin:0 50px;
 }
@@ -29,17 +32,17 @@ header#top2
 	{
    	text-transform: uppercase;
    	font-weight: 700;
-   	color: #ed786a;
+   	color: #fff;
    	text-shadow: 0.05em 0.075em 0 rgba(0,0,0,0.1);
    	font-size: 2.5em;
-   	letter-spacing: 15px;
+   	letter-spacing: 10px;
 	}
 
 	header p
 	{
   	text-transform: uppercase;
   	font-weight: 400;
-  	color: #888;
+  	color: #fff;
 	}
 
 
@@ -49,8 +52,7 @@ header#top2
 ********************************************************************************/
 section
 {
-  border-top: 2px solid #e5e5e5;
-  border-bottom: 2px solid #e5e5e5;
+
   margin:10px 50px;
   text-align: center;
 }
@@ -59,7 +61,7 @@ section
 	{
             font-weight: 600;
 	  font-variant:small-caps;
-	  color: #888;
+	  color: #fff;
 	  font-size:1.5em;
 	  letter-spacing: 12px;
 	  margin:50px 0;
@@ -84,7 +86,6 @@ section
         section#contacter,
         section#connecter
         {
-            background-color: #f0f0f0;
             margin:0;
         }
 
@@ -93,7 +94,7 @@ div.search input
 {
     width:250px;
     float: right;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 
@@ -101,13 +102,12 @@ div.search input
  footer                                                                
 ********************************************************************************/
 footer
-{
-  	width:100%;
-	color: white;
-  	background-color: #666;
-  	border-top: 2px solid #e5e5e5;
-  	padding:50px 10px;
+    {
+  	    background-color: #000;
+  	    width:100%;
+	    color: #fff;
+  	    padding:50px 10px;
 
-}
+    }
 
 

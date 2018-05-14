@@ -3,14 +3,14 @@ def entete(chemin=''):
     <!DOCTYPE HTML>
     <html lang="fr">
         <head>
-                    <title>Mon premier site</title>
+                    <title></title>
                     <meta charset="UTF-8" />
                     <link rel="stylesheet" type="text/css" href="'''+chemin+'''/css/all.css" />
+                    
         </head>
         <body>
         '''
     return ventete
-
 
 def menu(chemin=''):
     menu='''
@@ -34,14 +34,10 @@ def menu(chemin=''):
             </li>
             <li>
                 <a href="'''+chemin+'''/index.py">
-                    Français
+                    Accueil
                 </a>
             </li>
-            <li>
-                <a href="'''+chemin+'''/index.py">
-                    Anglais
-                </a>
-            </li>
+
         </ul>
     </nav>
    '''
@@ -64,7 +60,6 @@ def titre(intitule='', paragraphe=0):
         titre = '''
             <header>
                     <h1>''' + intitule + '''</h1>
-                    <p>Sous-titre</p>
              </header>
             '''
     return titre

@@ -19,7 +19,7 @@ def createurs():
                     <article>
                         <div>
                             <h3>Adrien Caillet</h3>
-                            <img src="C:/karrigell/www/images/adrien.jpg" alt="adrien" title="Adrien Caillet"/>
+                            <img src="'''+chemin+'''/images/fond.jpg" alt="adrien" title="Adrien Caillet"/>
                         </div>
                     </article>
                 </div>
@@ -28,7 +28,7 @@ def createurs():
                     <article>
                         <div>
                             <h3>Allan Denis</h3>
-                            <img src="C:/karrigell/www/images/allan.jpg" alt="allan" title="Allan Denis"/>
+                            <img src="'''+chemin+'''/images/fond2.jpg" alt="allan" title="Allan Denis"/>
                         </div>
                     </article>
                 </div>
