@@ -4,9 +4,9 @@ def chemin():
 def configBD():
     config = {
         'user': 'root',
-        'password': '',
+        'password': 'admin',
         'host': 'localhost',
-        'database': 'test',
+        'database': 'incident_cycliste',
         'raise_on_warnings': True
     }
     return config
