@@ -13,6 +13,7 @@ def index():
 
 
 def corps():
+  if "login" in Session():
     vcorps = '''
         <section id="corps">
 
@@ -20,10 +21,10 @@ def corps():
                 <div class="col-12 col-md-4 col-sm-6" >
                     <article>
                         <div>
-                            <a href="'''+chemin+'''/python/incidents.py">
+                            <a href="'''+chemin+'''/python/saisieCarte.py">
                             <h3>Incidents</h3>
                             </a>
-                            <p>Texte</p>
+                            <p>Reporter un incident</p>
                         </div>
                     </article>
                 </div>
@@ -57,7 +58,45 @@ def corps():
             </div>
         </section>
     '''
-    return vcorps
+  else:
+      vcorps = '''
+      <section id="corps">
+            <div class="row">
+                            <div class="col-12 col-md-4 col-sm-6" >
+                                <article>
+                                    <div>
+                                        <a href="''' + chemin + '''/python/connecter.py">
+                                       <h3>Incidents</h3>
+                                        </a>
+                                      <p>Reporter un incident</p>
+                                    </div>
+                                </article>
+                           </div>
+                            <div class="col-12 col-md-4 col-sm-6" >
+                            <article>
+                                    <div>
+
+                                        <a href="''' + chemin + '''/python/carte.py">
+                                        <h3>Carte</h3>
+                                        </a>        
+                                        <p>Carte des incidents</p>
+                                    </div>
+
+                                </article>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-sm-6"  >
+                                <article>
+                                    <div>
+                                        <h3>Statistiques</h3>
+                                        <p>Texte </p>
+                                    </div>
+                                </article>
+                            </div>
+          </section>
+      '''
+
+  return vcorps
 
 def liens(chemin=''):
     liens = '''
