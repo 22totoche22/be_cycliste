@@ -46,7 +46,10 @@ def corps():
                 <div class="col-12 col-md-4 col-sm-6"  >
                     <article>
                         <div>
+                            <a href="'''+chemin+'''/python/statistiques.py">
                             <h3>Statistiques</h3>
+                            <img src =" '''+chemin+''' /images/LogoStats.png">
+                            </a>
                             <p>Texte </p>
                         </div>
                     </article>
