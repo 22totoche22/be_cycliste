@@ -25,6 +25,10 @@ def connecter(essai=''):
                             <input name="pwd" placeholder="Votre mot de passe" type="password" />
                             <button class="button" type="submit">Se connecter</button>
                         </form>
+                        <label>Pas de compte ?</label>
+                                <a href="'''+chemin+'''/python/sincrire.py">
+                                S'inscrire
+                                 </a>
                     </div>
                 </div>
             </section>
@@ -41,6 +45,10 @@ def connecter(essai=''):
                                     <input name="pwd" placeholder="Votre mot de passe" type="password" />
                                     <button class="button" type="submit">Se connecter</button>
                                 </form>
+                                <label>Pas de compte ?</label>
+                                <a href="'''+chemin+'''/python/sincrire.py">
+                                S'inscrire
+                                 </a>
                             </div>
                         </div>
                     </section>
