@@ -13,15 +13,15 @@ def index():
 
 
 def corps():
-  if "login" in Session():
-    vcorps = '''
+    if "login" in Session():
+        vcorps = '''
         <section id="corps">
 
             <div class="row">
                 <div class="col-12 col-md-4 col-sm-6" >
                     <article>
                         <div>
-                            <a href="'''+chemin+'''/python/saisieCarte.py">
+                            <a href="''' + chemin + '''/python/saisieCarte.py">
                             <h3>Incidents</h3>
                             </a>
                             <p>Reporter un incident</p>
@@ -33,12 +33,12 @@ def corps():
 
                     <article>
                         <div>
-                            <a href="'''+chemin+'''/python/carte.py">
+                            <a href="''' + chemin + '''/python/carte.py">
                             <h3>Carte</h3>
-                            <img src="'''+chemin+'''/images/fond.jpg">
+                            <img src="''' + chemin + '''/images/fond.jpg">
                             </a>        
                             <p>Texte</p>
-                            
+
                         </div>
 
                     </article>
@@ -47,19 +47,19 @@ def corps():
                 <div class="col-12 col-md-4 col-sm-6"  >
                     <article>
                         <div>
-                            <a href="'''+chemin+'''/python/statistiques.py">
+                            <a href="''' + chemin + '''/python/statistiques.py">
                             <h3>Statistiques</h3>
-                            <img src =" '''+chemin+''' /images/LogoStats.png">
+                            <img src =" ''' + chemin + ''' /images/LogoStats.png">
                             </a>
-                            <p>Texte </p>
+                            <p>Carte des incidents cyclistes dans la région toulousaine </p>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
     '''
-  else:
-      vcorps = '''
+    else:
+        vcorps = '''
       <section id="corps">
             <div class="row">
                             <div class="col-12 col-md-4 col-sm-6" >
@@ -78,8 +78,9 @@ def corps():
 
                                         <a href="''' + chemin + '''/python/carte.py">
                                         <h3>Carte</h3>
+                                        <img src="''' + chemin + '''/images/fond.jpg">
                                         </a>        
-                                        <p>Carte des incidents</p>
+                                        <p>Carte des incidents cyclistes dans la région toulousaine</p>
                                     </div>
 
                                 </article>
@@ -88,7 +89,10 @@ def corps():
                             <div class="col-12 col-md-4 col-sm-6"  >
                                 <article>
                                     <div>
+                                        <a href="''' + chemin + '''/python/statistiques.py">
                                         <h3>Statistiques</h3>
+                                        <img src =" ''' + chemin + ''' /images/LogoStats.png">
+                                        </a>
                                         <p>Texte </p>
                                     </div>
                                 </article>
@@ -96,7 +100,7 @@ def corps():
           </section>
       '''
 
-  return vcorps
+    return vcorps
 
 def liens(chemin=''):
     liens = '''
