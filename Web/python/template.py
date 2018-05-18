@@ -37,7 +37,12 @@ def menu(chemin=''):
                     Accueil
                 </a>
             </li>
-
+            </li>
+            <li>
+                <a href="'''+chemin+'''/python/createurs.py">
+                    Créateurs
+                </a>
+            </li>
         </ul>
     </nav>
    '''
@@ -78,13 +83,22 @@ def footer(chemin=''):
                 <a href="'''+chemin+'''/python/faq.py">
                     FAQ
                 </a>
+            </li>
+        </ul>
+    </nav>
                 
-            </li>
-            <li>
-                <a href="'''+chemin+'''/python/createurs.py">
-                    Créateurs
-                </a>
-            </li>
+            
         '''
 
     return footer
+
+def copyright(chemin=''):
+    copyright = '''
+    
+        <div>
+            <p> Tout droits reservés à Armand Vergnes</p>
+        </div>
+    
+    '''
+    return copyright
+
