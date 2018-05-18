@@ -9,7 +9,7 @@ nav
 {
     left: 0;
     width: 100%;
-
+    color: #fff
 }
 
 nav  ul  li
@@ -17,6 +17,7 @@ nav  ul  li
     display: inline-block;
     padding-right: 2em;
     cursor:pointer;
+
 }
 
 nav ul  li  a
@@ -30,7 +31,7 @@ nav ul  li  a
 
 nav  ul  li a:hover
 {
-    color: #ed786a;
+    color: #e5e5e5;
     border-bottom-color: rgba(255,255,255,0);
 }
 
@@ -39,7 +40,7 @@ nav  span.fa-stack
     font-size:1.2em;
 }
 
-nav i.fa-inverse {color: #e4e4e4;}
+nav i.fa-inverse {color: #fff;}
 nav i.fa-circle { }
 
 nav  ul  li  a:before
