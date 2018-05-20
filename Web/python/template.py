@@ -1,3 +1,5 @@
+bdd=Import('../data/bdd.py')
+
 def entete(chemin=''):
     ventete = '''
     <!DOCTYPE HTML>
@@ -15,7 +17,17 @@ def entete(chemin=''):
 def menu(chemin=''):
     menu='''
     <nav>
-        <ul>
+        <ul>'''
+
+    if "login" in Session():
+         if Session()["id"] in bdd.aff_admin():
+            menu+='''
+                <a href="'''+chemin+'''/python/gestionutilisateur.py">
+                    Gestion des utilisateurs
+                </a>'''
+         menu += '''<a href="'''+chemin+'''/python/mon_compte.py">
+                mon compte
+            </a>
             
         '''
     if "login" in Session():
