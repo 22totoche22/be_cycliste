@@ -1,7 +1,7 @@
 conf=Import('../data/config.py')
 template=Import('../python/template.py')
 chemin = conf.chemin()
-
+bdd = Import('../data/bdd.py')
 
 def index():
     result = template.entete(chemin)
@@ -34,32 +34,47 @@ def carte():
         font-family: 'Roboto','sans-serif';
         line-height: 30px;
         padding-left: 10px;
-        width : 40%;
+        width : 70%;
         margin : auto;
         
 }
+    #sous_carte{
+    color : #fff
+    }
+    #dessus_carte{
+    color : #fff
+    }
+    label {
+    color : black;
+    }
     input[data-readonly] {
   pointer-events: none;
+
 }
+    #description_inci{
+    width : 80%;
+    }
+
     </style>
   </head>
   <body>
       
      
       
-    <label>Veuillez cliquer sur le lieu de l'incident</label>
+    <label id = "dessus_carte">Veuillez cliquer sur le lieu de l'incident</label>
     <hr></hr>
       <div id="map"></div>
       <hr></hr>
-      <label>Veuillez remplir les informations relatives à l'incident</label>
+      <label id = "sous_carte">Veuillez remplir les informations relatives à l'incident</label>
       <hr></hr>
       <form id="floating-panel" method="POST" action = "fenvoyer" enctype="multipart/form-data">
-        <label class="" >Latitude : </label> <input id=latitude type="text" name="latitude" value="" required data-readonly>
+        <li><label class="" >Latitude : </label> <input id=latitude type="text" name="latitude" value="" required data-readonly>
         <label class="" >Longitude : </label> <input id=longitude type="text" name="longitude" value="" required data-readonly>
-        <label class="" >Adresse : </label> <input id=adresse type="text" name="adresse" value="" required data-readonly>
-        <label class="" > Description de l'incident</label>
-        <textarea name="Description" placeholder="Décrivez l'incident" required></textarea>
-        <label class="" >Catégorie </label>
+        <label class="" >Quartier : </label> <input id=adresse type="text" name="adresse" value="" required data-readonly></li>
+        <input id=ville type="text" name="ville" value="" hidden>
+        <li><label class="" > Description de l'incident</label>
+        <li><textarea id = "description_inci" name="Description" placeholder="Décrivez l'incident" required></textarea></li>
+        <li><label class="" >Catégorie </label>
         <select name=Categorie>
                         <optgroup label="Revetement">
                             <option value="1">trou dans la chaussée</option>
@@ -91,8 +106,8 @@ def carte():
                             <option value="3">fort</option>
                             <option value="4">élevé</option>
                         </optgroup>
-        </select>
-        
+        </select></li>
+     
         <input  type="submit"  value="valider">
       </form>
       <hr></hr>
@@ -111,13 +126,16 @@ def carte():
             latitude.value = "";
             longitude.value= "";
             adresse.value="";
+            ville.value="";
       }
       var marker;
       var latitude = document.getElementById("latitude");
       var longitude = document.getElementById("longitude");
       var adresse = document.getElementById("adresse");
+      var ville = document.getElementById("ville");
       function placeMarker(location, map,geocoder) {
                     adresse.value = "";
+                    ville.value = "";
                     if(marker){
                         marker.setPosition(location);
                     }
@@ -134,9 +152,11 @@ def carte():
 
                     if (status === 'OK') {
                         if (results[0]) {
-
+                                  
                                   if (results[1].address_components[0].types[1] == "political"){
                                           adresse.value = results[1].address_components[0].long_name;
+                                          ville.value = results[1].address_components[1].long_name;
+                                          
 
                                     }
 
@@ -170,13 +190,44 @@ jquery.min.js"></script>
     return vcarte
 
 
-def fenvoyer(latitude='', longitude='', adresse='', Categorie='',Description='',Niveau=''):
-        result = "les données envoyées sont : <br />lat :" + latitude
-        result += "<br /> long :" + longitude
-        result += "<br /> adresse :" + adresse
-        result += "<br /> description :" + Description
-        result += "<br /> Categorie :" + Categorie
-        result += "<br /> niveau :" + Niveau
-        return result
+# def fenvoyer(latitude='', longitude='', adresse='',ville='', Categorie='',Description='',Niveau=''):
+#         result = "les données envoyées sont : <br />lat :" + latitude
+#         result += "<br /> long :" + longitude
+#         result += "<br /> adresse :" + adresse
+#         result += "<br /> description :" + Description
+#         result += "<br /> Categorie :" + Categorie
+#         result += "<br /> niveau :" + Niveau
+#         return result
+
+def fenvoyer(latitude='', longitude='', adresse='',ville='', Categorie='',Description='',Niveau=''):
+    result = template.entete(chemin)
+    result += template.menu(chemin)
+    result += template.titre("Incident",0)
+    result += "<section>"
+    msg = bdd.insertincident(latitude, longitude, adresse, Description, Categorie, Niveau)
+    if msg is None:
+        result += "<div>L'incident a été enregistré</div>"
+    #result += "<div class='comm'>Liste des incidents enregistrés dans la base de données</div>"
+    #result += afficheincident()
+    result += "</section>"
+    result += template.footer(chemin)
+    return result
 
 
+def afficheincident():
+    result = ''
+    liste = bdd.affichincident()
+
+    for (latitude, longitude, adresse, description, categorie, niveau, lieu) in liste:
+        result += '<div>'
+        result += str(id)+' '
+        result += latitude.decode()+' '
+        result += longitude.decode()+' '
+        result += adresse.decode()+' '
+        result += description.decode() + ' '
+        result += str(categorie) + ' '
+        result += str(niveau) + ' '
+        result += lieu.decode() + ' '
+        result += '</div>'
+
+    return result

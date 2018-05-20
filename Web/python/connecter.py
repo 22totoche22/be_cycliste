@@ -14,41 +14,31 @@ def index(essai=''):
 
 
 def connecter(essai=''):
-    if essai=="":
-        connection = '''
-            <section id="connecter">
-    
-                <div class="row">
-                    <div class="col-12 col-md-4 col-sm-6 offset-sm-3 offset-md-4 form-group" >
-                        <form method="post" action="'''+chemin+'''/python/connecter.py/verif">
-                            <input name="login" placeholder="Votre login" type="text" />
-                            <input name="pwd" placeholder="Votre mot de passe" type="password" />
-                            <button class="button" type="submit">Se connecter</button>
-                        </form>
-                        <label>Pas de compte ?</label>
-                                <a href="'''+chemin+'''/python/sincrire.py">
-                                S'inscrire
-                                 </a>
-                    </div>
-                </div>
-            </section>
-            '''
-    else:
-        connection = '''
+    connection = '''
+                    <style>
+                    #connex_fail{color : red}
+                    </style>
                     <section id="connecter">
 
                         <div class="row">
                             <div class="col-12 col-md-4 col-sm-6 offset-sm-3 offset-md-4 form-group" >
-                                <form method="post" action="''' + chemin + '''/python/connecter.py/verif">
-                                    <label>Mauvais mot de passe ou mauvais identifiant</label>
-                                    <input name="login" placeholder="Votre login" type="text" />
+                                <form id = "connex" method="post" action="''' + chemin + '''/python/connecter.py/verif"> '''
+    if essai!='':
+                                 connection +=  ''' <label id = "connex_fail" >Mauvais mot de passe ou mauvais identifiant</label>'''
+
+    connection += '''                                
+                            <input name="login" placeholder="Votre login" type="text" />
                                     <input name="pwd" placeholder="Votre mot de passe" type="password" />
                                     <button class="button" type="submit">Se connecter</button>
                                 </form>
-                                <label>Pas de compte ?</label>
+                                <li><label>Pas de compte ?</label>
                                 <a href="'''+chemin+'''/python/sincrire.py">
                                 S'inscrire
-                                 </a>
+                                 </a></li>
+                                <li> <label>Mot de passe</label>
+                                <a href="'''+chemin+'''/python/mdp.py">
+                                 oublié
+                                 </a></li>
                             </div>
                         </div>
                     </section>
@@ -79,4 +69,5 @@ def deconnecter():
         del Session()["surnom"]
         del Session()["login"]
         del Session()["pwd"]
+        del Session()["id"]
     raise HTTP_REDIRECTION(chemin+'/index.py')          # la personne est redirigée vers la page d'accueil

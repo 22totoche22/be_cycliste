@@ -96,7 +96,7 @@ def copyright(chemin=''):
     copyright = '''
     
         <div>
-            <p> Tout droits reservés à Armand Vergnes</p>
+            <p> Tout droits reservés </p>
         </div>
     
     '''
