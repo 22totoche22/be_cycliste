@@ -15,6 +15,7 @@ CREATE TABLE incident_cycliste.Utilisateur (
     login VARCHAR(20) NOT NULL ,
     mdp VARCHAR(20) NOT NULL , 
     surnom VARCHAR(20) NOT NULL , 
+    mail VARCHAR (40) NOT NULL ,
     PRIMARY KEY (idUtilisateur)
     ) ENGINE = InnoDB CHARSET=utf8;
     
@@ -81,15 +82,17 @@ CREATE TABLE incident_cycliste.Incident (
     niveauUrgence VARCHAR(20) NOT NULL , 
     description TEXT NOT NULL , 
     cloture BOOLEAN NULL DEFAULT FALSE , 
-    raisonCloture ENUM('nullite','reparation') NULL DEFAULT NULL , 
-    longLat VARCHAR(10) NOT NULL , 
-    idUtilisateur INT , 
+    raisonCloture TEXT NULL DEFAULT NULL , 
+    longitude VARCHAR(20) NOT NULL ,
+    latitude  VARCHAR(20) NOT NULL ,
+    idUtilisateur INT ,
+    idUtilisateurcloture INT DEFAULT NULL , 
     idSousCategorie INT ,
-    idQuartier INT , 
+    lieu VARCHAR(40) NOT NULL , 
     PRIMARY KEY (idIncident),
     FOREIGN KEY (idUtilisateur) REFERENCES Utilisateur (idUtilisateur) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (idSousCategorie) REFERENCES sousCategorie (idSousCategorie) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (idQuartier) REFERENCES Quartier (idQuartier) ON DELETE SET NULL ON UPDATE CASCADE
+    FOREIGN KEY (idUtilisateurcloture) REFERENCES Utilisateur (idUtilisateur) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (idSousCategorie) REFERENCES sousCategorie (idSousCategorie) ON DELETE SET NULL ON UPDATE CASCADE
     ) ENGINE = InnoDB CHARSET=utf8;
     
 
@@ -117,11 +120,11 @@ CREATE TABLE incident_cycliste.Administrateur (
 
 
 
-INSERT INTO Utilisateur (login, mdp, surnom) values 
-('admin','admin','Dieu'),
-('Adrien','adrien','hésitateur'),
-('Allan','allan','intégrateur'),
-('Matthias', 'matthias', 'dérivateur'),
+INSERT INTO Utilisateur (login, mdp, surnom,mail) values 
+('admin','admin','Dieu','admin@admin.fr'),
+('Adrien','adrien','hésitateur','adr@admin.fr'),
+('Allan','allan','intégrateur','all@admin.fr'),
+('Matthias', 'matthias', 'dérivateur','matth@admin.fr');
 
 INSERT INTO Analyste (idUtilisateurAnalyste) values 
 (1),
@@ -158,5 +161,4 @@ INSERT INTO Quartier (nom,idCommune) values
 ('mirail',2),
 ('rangeuil',1);
 
-INSERT INTO Incident (niveauUrgence, description, longLat, idUtilisateur,idSousCategorie, idQuartier) values 
-('bas','je suis tombé', '42\'50, 0\'2','4','10','2');
+

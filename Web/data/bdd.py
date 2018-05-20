@@ -24,44 +24,6 @@ def close_bd(cursor,cnx):
     cursor.close()
     cnx.close()
 
-# insertion dans la table commentaires
-
-
-# def insertCommentData(email="", message="", name="") :
-#     sql = "INSERT INTO commentaire (nom, comment, email) VALUES (%s, %s, %s);"
-#     param = (email, message, name)
-#
-#     try :
-#         cnx=connexion()
-#         cursor = cnx.cursor(prepared=True)
-#         results = cursor.execute(sql, param)
-#         msg = results
-#         cnx.commit()
-#     except mysql.connector.Error as err :
-#         msg = "Failed select table test: {}".format(err)
-#         exit(1)
-#     finally :
-#         close_bd(cursor, cnx)
-#     return msg
-
-
-# Affichage de la table commentaires
-
-
-# def affichCommentData():
-#     sql = "SELECT id, nom, comment, email FROM commentaire;"
-#
-#     try:
-#         cnx = connexion()
-#         cursor = cnx.cursor(prepared=True)
-#         results = cursor.execute(sql)
-#         liste = list(cursor)
-#     except mysql.connector.Error as err:
-#         liste = "Failed select table test: {}".format(err)
-#         exit(1)
-#     finally:
-#         close_bd(cursor, cnx)
-#     return liste
 
 
 # test de l'authentification de l'utilisateur.
@@ -71,14 +33,181 @@ def close_bd(cursor,cnx):
 def verif_connect(login='', pwd=''):
     cnx = connexion()
     cursor = cnx.cursor()
-    query = "SELECT idUtilisateur, login, mdp, surnom FROM Utilisateur WHERE login=%s AND mdp=%s LIMIT 1"
+    query = "SELECT idUtilisateur, login, mdp, surnom, mail FROM Utilisateur WHERE login=%s AND mdp=%s LIMIT 1"
     param = (login, pwd)
     cursor.execute(query, param)
     liste = list(cursor)
-    for (idUtilisateur, login, mdp, surnom) in liste:
+    for (idUtilisateur, login, mdp, surnom, mail) in liste:
          Session()["nom"] = login
          Session()["surnom"] = surnom
          Session()["mdp"] = mdp
          Session()["id"] = idUtilisateur
+         Session()["mail"] = mail
     close_bd(cursor, cnx)
     return liste
+
+
+
+
+# insertion dans la table incidents
+
+
+def insertincident(lat="", long="", adresse="", description="",categorie=None,niveau=None) :
+
+
+    sql = "INSERT INTO Incident (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu) VALUES (%s, %s, %s, %s, %s, %s, %s);"
+    param = (niveau, description, long, lat, Session()["id"], categorie, adresse)
+
+    try :
+        cnx=connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql, param)
+        msg = results
+        cnx.commit()
+    except mysql.connector.Error as err :
+        msg = "Failed select table test: {}".format(err)
+        exit(1)
+    finally :
+        close_bd(cursor, cnx)
+    return msg
+
+
+# Affichage de la table incidents
+
+
+def affichincident():
+    sql = "SELECT niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture, idIncident FROM Incident;"
+
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+
+def afficheutilisateur():
+    sql = "SELECT login FROM Utilisateur;"
+
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+
+def afficheurmail():
+    sql = "SELECT mail,mdp FROM Utilisateur;"
+
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+
+
+def insertUtili(login,pwd,surnom) :
+
+
+    sql = "INSERT INTO Utilisateur (login,mdp,surnom) VALUES (%s, %s, %s);"
+    param = (login,pwd,surnom)
+
+    try :
+        cnx=connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql, param)
+        msg = results
+        cnx.commit()
+    except mysql.connector.Error as err :
+        msg = "Failed select table test: {}".format(err)
+        exit(1)
+    finally :
+        close_bd(cursor, cnx)
+    return msg
+
+
+
+
+def change_surnom(nsurnom):
+    sql = "UPDATE Utilisateur SET surnom = %s WHERE idUtilisateur = %s;"
+    param = (nsurnom, Session()["id"])
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql, param)
+        msg = results
+        cnx.commit()
+    except mysql.connector.Error as err:
+        msg = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return msg
+
+
+def change_mdp(mdp):
+    sql = "UPDATE Utilisateur SET mdp=%s WHERE idUtilisateur=%s;"
+    param = (mdp, Session()["id"])
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql, param)
+        msg = results
+        cnx.commit()
+    except mysql.connector.Error as err:
+        msg = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return msg
+
+
+
+def recup_categorie():
+    sql = "SELECT idSousCategorie, nomSousCategorie, nomCategorie FROM sousCategorie JOIN Categorie ON sousCategorie.idCategorie = Categorie.idCategorie ;"
+
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def cloturincident(idincident, raisoncloture):
+    sql = "UPDATE Incident SET cloture=1, raisoncloture=%s, idUtilisateurcloture=%s where idIncident=%s;"
+    param = (raisoncloture,Session()["id"],idincident)
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql, param)
+        msg = results
+        cnx.commit()
+    except mysql.connector.Error as err:
+        msg = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return msg
