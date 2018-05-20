@@ -35,11 +35,13 @@ def inscription(essai=''):
            inscription += ''' <label id="insriptionfail"> Login déjà pris</label>
             '''
         inscription +='''
-                            
-                            <li><input name="login" placeholder="Votre login" type="text" required/></li>
-                            <li><input id=pass1 name="pwd" placeholder="Votre mot de passe" type="password" required/></li>
-                            <li><input id=pass2 name="pwd2" placeholder="Retapez votre mot de passe" type="password" onKeyUp="checkpassword()" required/></li>
-                            <li><input  name="surnom" placeholder="Surnom" type="text" required/></li>
+                            <hr><input  name="nom" placeholder="Votre nom" type="text" required/></hr>
+                            <hr><input  name="prenom" placeholder="Votre prenom" type="text" required/></hr>
+                            <hr><input name="login" placeholder="Votre login" type="text" required/></hr>
+                            <hr><input  name="mail" placeholder="Votre mail" type="text" required/></hr>
+                            <hr><input id=pass1 name="pwd" placeholder="Votre mot de passe" type="password" required/></hr>
+                            <hr><input id=pass2 name="pwd2" placeholder="Retapez votre mot de passe" type="password" onKeyUp="checkpassword()" required/></hr>
+                            <hr><input  name="surnom" placeholder="Surnom" type="text" required/></li>
                             <div id="comp" required></div>
                             <button id = "validerinsc" class="button" type="submit" >S'incrire</button>
                         </form>
@@ -68,14 +70,14 @@ def inscription(essai=''):
 
 
 
-def finscrire(login,pwd,pwd2,surnom):
+def finscrire(nom,prenom,login,mail,pwd,pwd2,surnom):
     if login not in affiche_utili():
         result = template.entete(chemin)
         result += template.menu(chemin)
         result += template.titre("Inscription",0)
         result += "<section>"
 
-        msg = bdd.insertUtili(login,pwd,surnom)
+        msg = bdd.insertUtili(login,pwd,surnom,nom,prenom,mail)
         if msg is None:
             result += "<div>Vous êtes bien inscrit</div>"
         result += "</section>"
