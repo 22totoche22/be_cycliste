@@ -124,11 +124,11 @@ def afficheurmail():
 
 
 
-def insertUtili(login,pwd,surnom) :
+def insertUtili(login,pwd,surnom,nom,prenom,mail) :
 
 
-    sql = "INSERT INTO Utilisateur (login,mdp,surnom) VALUES (%s, %s, %s);"
-    param = (login,pwd,surnom)
+    sql = "INSERT INTO Utilisateur (login,mdp,surnom,nom,prenom,mail) VALUES (%s, %s, %s,%s,%s,%s);"
+    param = (login,pwd,surnom,nom,prenom,mail)
 
     try :
         cnx=connexion()
@@ -211,3 +211,114 @@ def cloturincident(idincident, raisoncloture):
     finally:
         close_bd(cursor, cnx)
     return msg
+
+def affichetoututilisateur():
+    sql = "SELECT idUtilisateur,login,nom,prenom, mail FROM Utilisateur;"
+
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def count_ouverture ():
+    sql="SELECT Utilisateur.idUtilisateur,Count(Incident.idUtilisateur) FROM Utilisateur Join Incident ON Utilisateur.idUtilisateur = Incident.idUtilisateur GROUP BY Utilisateur.idUtilisateur"
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def count_cloture ():
+    sql = "SELECT Utilisateur.idUtilisateur, Count(Incident.idUtilisateur) FROM Utilisateur Join Incident ON Utilisateur.idUtilisateur = Incident.idUtilisateurcloture GROUP BY Utilisateur.idUtilisateur"
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def analyste():
+    sql = "SELECT idUtilisateurAnalyste, nom,prenom FROM Analyste JOIN Utilisateur ON idUtilisateurAnalyste=idUtilisateur"
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+
+def administrateur():
+    sql = "SELECT idUtilisateurAdministrateur, nom, prenom FROM Administrateur JOIN Utilisateur ON idUtilisateurAdministrateur=idUtilisateur"
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+
+def changeprofil(idUtili,Profil):
+    if Profil ==str(1):
+            sql = "INSERT INTO Analyste (idUtilisateurAnalyste) values (%s) ON DUPLICATE KEY UPDATE idUtilisateurAnalyste=idUtilisateurAnalyste;"
+            param = (idUtili)
+    elif Profil ==str(2):
+            sql = "INSERT INTO Administrateur (idUtilisateurAdministrateur) values (%s) ON DUPLICATE KEY UPDATE idUtilisateurAdministrateur=idUtilisateurAdministrateur;"
+            param = (idUtili)
+    else:
+        sql = "DELETE FROM Analyste WHERE idUtilisateurAnalyste = %s;"
+        param = (idUtili)
+
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql, param)
+        msg = results
+        cnx.commit()
+    except mysql.connector.Error as err:
+        msg = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return msg
+
+def aff_admin():
+    liste_ = []
+    liste = administrateur()
+    for (idadmin,nom,prenom) in liste:
+        liste_.append(idadmin)
+    return liste_
+
+def aff_analy():
+    liste_ = []
+    liste = analyste()
+    for (idanal,nom,prenom) in liste:
+        liste_.append([idanal])
+    return liste_
