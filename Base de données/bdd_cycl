@@ -16,6 +16,8 @@ CREATE TABLE incident_cycliste.Utilisateur (
     mdp VARCHAR(20) NOT NULL , 
     surnom VARCHAR(20) NOT NULL , 
     mail VARCHAR (40) NOT NULL ,
+    nom VARCHAR (20) NOT NULL ,
+    prenom VARCHAR (20) NOT NULL,
     PRIMARY KEY (idUtilisateur)
     ) ENGINE = InnoDB CHARSET=utf8;
     
@@ -120,11 +122,9 @@ CREATE TABLE incident_cycliste.Administrateur (
 
 
 
-INSERT INTO Utilisateur (login, mdp, surnom,mail) values 
-('admin','admin','Dieu','admin@admin.fr'),
-('Adrien','adrien','hésitateur','adr@admin.fr'),
-('Allan','allan','intégrateur','all@admin.fr'),
-('Matthias', 'matthias', 'dérivateur','matth@admin.fr');
+INSERT INTO Utilisateur (login, mdp, surnom,mail,nom,prenom) values 
+('admin','admin','Dieu','admin@admin.fr','admin','admin'),
+('Adrien','adrien','hésitateur','adr@admin.fr','adrien','caillet');
 
 INSERT INTO Analyste (idUtilisateurAnalyste) values 
 (1),
