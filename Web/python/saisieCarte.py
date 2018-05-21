@@ -73,7 +73,7 @@ def carte():
         <label class="" >Quartier : </label> <input id=adresse type="text" name="adresse" value="" required data-readonly></li>
         <input id=ville type="text" name="ville" value="" hidden>
         <li><label class="" > Description de l'incident</label>
-        <li><textarea id = "description_inci" name="Description" placeholder="Décrivez l'incident" required></textarea></li>
+        <li><textarea id = "description_inci" name="Description" placeholder="Décrivez l'incident"></textarea></li>
         <li><label class="" >Catégorie </label>
         <select name=Categorie>
                         <optgroup label="Revetement">

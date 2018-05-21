@@ -34,7 +34,7 @@ def carte():
         font-family: 'Roboto','sans-serif';
         line-height: 30px;
         padding-left: 10px;
-        width : 70%;
+        width : 50%;
         margin : auto;
         color : black;
 }
@@ -44,13 +44,13 @@ def carte():
         #supprimer{
         background : white;
         color: black;
-        width : 70%;
+        width : 50%;
         margin : auto;
         }
         #cloturer{
         background : white;
         color: black;
-        width : 70%;
+        width : 50%;
         margin : auto;
         }
           input[data-readonly] {
