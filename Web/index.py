@@ -1,6 +1,7 @@
 conf=Import('data/config.py')
 template=Import('python/template.py')
 chemin = conf.chemin()
+bdd=Import('../data/bdd.py')
 
 def index():
     result = template.entete(chemin)
@@ -47,7 +48,10 @@ def corps():
                         </div>
 
                     </article>
-                </div>
+                </div>'''
+    if "login" in Session():
+        if Session()["id"] in bdd.aff_analy():
+            vcorps += '''
 
                 <div class="col-12 col-md-4 col-sm-6"  >
                     <article>
@@ -59,7 +63,8 @@ def corps():
                             <p>Texte </p>
                         </div>
                     </article>
-                </div>
+                </div>'''
+    vcorps +='''
             </div>
         </section>
        '''

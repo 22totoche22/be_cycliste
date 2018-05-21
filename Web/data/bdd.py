@@ -320,5 +320,21 @@ def aff_analy():
     liste_ = []
     liste = analyste()
     for (idanal,nom,prenom) in liste:
-        liste_.append([idanal])
+        liste_.append(idanal)
     return liste_
+
+def suppincident(idincident):
+    sql = "DELETE FROM Incident WHERE idIncident = %s;"
+    param = (idincident)
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql, param)
+        msg = results
+        cnx.commit()
+    except mysql.connector.Error as err:
+        msg = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return msg

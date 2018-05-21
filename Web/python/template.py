@@ -24,7 +24,11 @@ def menu(chemin=''):
             menu+='''
                 <a href="'''+chemin+'''/python/gestionutilisateur.py">
                     Gestion des utilisateurs
+                </a>
+                <a href="'''+chemin+'''/python/gestionincidents.py">
+                    Gestion des incidents
                 </a>'''
+
          menu += '''<a href="'''+chemin+'''/python/mon_compte.py">
                 mon compte
             </a>
