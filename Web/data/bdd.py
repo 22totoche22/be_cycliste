@@ -338,3 +338,48 @@ def suppincident(idincident):
     finally:
         close_bd(cursor, cnx)
     return msg
+
+def countincident():
+    sql = "SELECT lieu, COUNT(idIncident),SUM(cloture) FROM Incident GROUP BY lieu;"
+    param=()
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def secteurincident():
+    sql = "SELECT idSecteur, COUNT(idIncident),SUM(cloture) FROM Incident JOIN Quartier ON Incident.lieu = Quartier.nom GROUP BY idSecteur;"
+    param = ()
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def communeincident():
+    sql = "SELECT Commune.nom, COUNT(idIncident),SUM(cloture) FROM Incident JOIN Quartier ON Incident.lieu = Quartier.nom JOIN Commune ON Commune.idCommune = Quartier.idCommune GROUP BY Commune.idCommune;"
+    param = ()
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste

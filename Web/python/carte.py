@@ -140,7 +140,7 @@ def carte():
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/
 jquery.min.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAllVFdOZbLMkxQNHMcyCWM3b2TYzASBzQ&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgsaVTjTFgU__1we6rLRCRMRZkr1rc0DU&callback=initMap"
     async defer></script>
   </body>
         '''
