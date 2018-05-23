@@ -2,9 +2,6 @@
 menu
 ********************************************************************************/
 
-
-
-
 nav
 {
     left: 0;
@@ -24,7 +21,6 @@ nav ul  li  a
 {
     border: 0;
     text-decoration: none;
-    text-transform: uppercase;
     font-weight: 400;
     color: #fff;
 }
@@ -35,13 +31,7 @@ nav  ul  li a:hover
     border-bottom-color: rgba(255,255,255,0);
 }
 
-nav  span.fa-stack
-{
-    font-size:1.2em;
-}
 
-nav i.fa-inverse {color: #fff;}
-nav i.fa-circle { }
 
 nav  ul  li  a:before
 {
@@ -121,3 +111,65 @@ nav  ul ul li  a
     text-transform: none!important;
     padding-left: 1em;
 }
+
+nav  ul article#enteteMenu  li
+{
+    float: right;
+}
+
+nav  ul article#enteteMenu  li a
+{
+text-decoration: none;
+color: #eaeaea;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+nav  ul article#enteteMenu  li a:hover
+{
+text-decoration: underline;
+color: #ffdb00;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+nav  ul article#enteteMenu  li a:active
+{
+text-decoration: underline;
+color:ff5500;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+
+nav  ul article#enteteConnecter  li
+{
+    float: left;
+}
+
+nav  ul article#enteteConnecter  li a
+{
+text-decoration: none;
+color: #eaeaea;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+nav  ul article#enteteConnecter  li a:hover
+{
+text-decoration: underline;
+color: #ffdb00;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+nav  ul article#enteteConnecter  li a:active
+{
+text-decoration: underline;
+color:ff5500;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+
+

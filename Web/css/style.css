@@ -1,6 +1,32 @@
 /*@charset 'UTF-8';*/
 @import url("https://fonts.googleapis.com/css?family=Hind|Merriweather+Sans|Ubuntu+Condensed");
 
+
+a
+{
+text-decoration: none;
+color: #eaeaea;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+a:hover
+{
+text-decoration: underline;
+color: #ffdb00;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+a:active
+{
+text-decoration: underline;
+color:ff5500;
+text-font: 'Ubuntu';
+text-align: center;
+}
+
+
 body
   {
      background: url("../images/fond.jpg");
@@ -54,40 +80,16 @@ header#top2
  section                                                                    
 ********************************************************************************/
 
-a
+section#corps
 {
-text-decoration: none;
-color:e5e5e5;
-text-font: 'Ubuntu'
+margin-bottom: 70px;
 }
 
-a:hover
+section#corps p
 {
-text-decoration: underline;
-color: #ffdb00;
-text-font: 'Ubuntu'
+margin-top: 20px;
+text-align: center;
 }
-
-a:active
-{
-text-decoration: underline;
-color:ff5500;
-text-font: 'Ubuntu'
-}
-
-
-section
-{
-
-  margin:10px 50px;
-}
-
-    section article#connection
-    {
-
-    margin: 5px 5px;
-
-    }
 
     section article#menu
     {
@@ -130,6 +132,11 @@ section
             margin:0;
         }
 
+section#liens
+{
+margin-left: 100px;
+}
+
 
 div.search input
 {
@@ -148,6 +155,7 @@ footer
   	    width:100%;
 	    color: #fff;
   	    padding:50px 10px;
+  	    text-align: center;
 
     }
 
@@ -155,38 +163,52 @@ footer
  CV
 ********************************************************************************/
 
-h31
+
+section#vergnes
 {
-color : #fff
-text-transform: uppercase
-border-bottom: 3px solid #e5e5e5;
+margin-left: 100px;
 }
 
-.sectionCV
+h31
 {
-margin-bottom: 20px;
+color : #ff0000
+text-transform: uppercase
+border-bottom: 100px solid #e5e5e5;
+margin-left: 100px;
+}
+
+sectionCV
+{
+margin-bottom: 100px;
 text-align: justify;
 }
 
-.titreCV
+titreCV
 {
 font-weight: bold;
 font-size: 20px;
 }
 
-.CV
+CV
 {
-height : 200px
+width: 700px;
+font-size: 16px;
+
 }
 
-.infoCV
+infoCV
 {
 float : left
 }
 
-.photoCV
+photoCV
 {
 float : right
+}
+
+enteteCV
+{
+height: 250px;
 }
 
 

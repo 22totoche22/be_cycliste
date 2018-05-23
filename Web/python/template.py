@@ -17,7 +17,10 @@ def entete(chemin=''):
 def menu(chemin=''):
     menu='''
     <nav>
-        <ul>'''
+        <ul>
+        <article id="enteteConnecter">
+        <li>
+        '''
 
     if "login" in Session():
          if Session()["id"] in bdd.aff_admin():
@@ -48,18 +51,25 @@ def menu(chemin=''):
         '''
     menu+='''
             </li>
-            <li>
-                <a href="'''+chemin+'''/index.py">
-                    Accueil
-                </a>
-            </li>
-            </li>
+            </article>
+            <article id="enteteMenu">
             <li>
                 <a href="'''+chemin+'''/python/createurs.py">
                     Créateurs
                 </a>
             </li>
+            <li>
+                <a href="'''+chemin+'''/python/faq.py">
+                    Manuel d'utilisation
+                </a>
+            </li>
+            <li>
+                <a href="'''+chemin+'''/index.py">
+                    Accueil
+                </a>
+            </li>
         </ul>
+        </article>
     </nav>
    '''
 
@@ -90,16 +100,9 @@ def footer(chemin=''):
     footer = '''
     <nav>
         <ul>
-            <li>
-                <a href="'''+chemin+'''/python/contact.py">
-                    Laissez un commentaire
-                </a>
-            </li>
-            <li>
-                <a href="'''+chemin+'''/python/faq.py">
-                    FAQ
-                </a>
-            </li>
+            <div>
+            <p> &copy; Tout droits reservés &copy;</p>
+            </div>
         </ul>
     </nav>
                 
@@ -108,13 +111,4 @@ def footer(chemin=''):
 
     return footer
 
-def copyright(chemin=''):
-    copyright = '''
-    
-        <div>
-            <p> Tout droits reservés </p>
-        </div>
-    
-    '''
-    return copyright
 
