@@ -29,6 +29,7 @@ def corps():
 
     vcorps += '''                      
        <h3>Incidents</h3>
+       <img src="''' + chemin + '''/images/incident.jpg">
                             </a>
                             <p>Reporter un incident</p>
                         </div>
@@ -41,7 +42,7 @@ def corps():
                         <div>
                             <a href="''' + chemin + '''/python/carte.py">
                             <h3>Carte</h3>
-                            <img src="''' + chemin + '''/images/fond.jpg">
+                            <img src="''' + chemin + '''/images/carte.jpg">
                             </a>        
                             <p>Carte des incidents cyclistes dans la région toulousaine</p>
                             
@@ -58,9 +59,9 @@ def corps():
                         <div>
                             <a href="'''+chemin+'''/python/statistiques.py">
                             <h3>Statistiques</h3>
-                            <img src =" '''+chemin+''' /images/LogoStats.png">
+                            <img src =" '''+chemin+''' /images/graphique.gif">
                             </a>
-                            <p>Texte </p>
+                            <p>Consultez les données mise en graphiques des incidentes cyclistes </p>
                         </div>
                     </article>
                 </div>'''

@@ -100,7 +100,7 @@ def footer(chemin=''):
     footer = '''
     <nav>
         <ul>
-            <div>
+            <div id="footer">
             <p> &copy; Tout droits reservés &copy;</p>
             </div>
         </ul>
