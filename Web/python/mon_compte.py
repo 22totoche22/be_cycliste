@@ -21,7 +21,7 @@ def mon_compte(essai=''):
         
         #moncompte{
         background : #fff;
-        width : 50%;
+        width : 65%;
         text-align : center;
         margin : auto;
         }

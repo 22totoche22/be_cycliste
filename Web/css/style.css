@@ -96,6 +96,7 @@ text-align: center;
 
 #menu
 {
+background-color: #000;
 text-align: right;
 margin: 5px 5px;
 width:100%;
@@ -178,16 +179,29 @@ text-align: center;
 color: blue;
 }
 
+#enteteConnecter
+{
+background-color: #000;
+text-align: right;
+margin: 5px 5px;
+width:100%;
+color: #fff;
+}
+
+hr
+{
+border: inherit;
+}
+
 /********************************************************************************
  footer                                                                
 ********************************************************************************/
 #footer
     {
-  	    background: linear-gradient: #000, #555;
+  	    background-color: #000;
   	    width:100%;
 	    color: #fff;
   	    text-align: center;
-        position: absolute;
         bottom:0;
     }
 

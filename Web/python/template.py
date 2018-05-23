@@ -33,7 +33,7 @@ def menu(chemin=''):
                 </a>'''
 
          menu += '''<a href="'''+chemin+'''/python/mon_compte.py">
-                mon compte
+                Mon compte
             </a>
             
         '''
