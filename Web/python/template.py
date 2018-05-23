@@ -76,9 +76,11 @@ def menu(chemin=''):
     return menu
 
 def nom():
-    vnom=''' '''
+    vnom=''' <hr></hr>
+            <hr></hr>
+            <hr></hr>'''
     if "login" in Session():
-          vnom +="<p>Bonjour "+Session()["surnom"]+"</p>"
+          vnom+="<p>Bonjour "+Session()["surnom"]+"</p>"
 
     return vnom
 

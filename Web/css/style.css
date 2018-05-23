@@ -149,12 +149,12 @@ div.search input
 /********************************************************************************
  footer                                                                
 ********************************************************************************/
-nav ul div#footer
+#footer
     {
-  	    background-color: #000;
+  	    background-linear: #000;
   	    width:100%;
 	    color: #fff;
-  	    padding:50px 10px;
+
   	    text-align: center;
 
     }
