@@ -144,10 +144,10 @@ def liens(chemin=''):
                 <h4>Quelques liens utiles</h4>
                 <nav>
                     <ul>
-                        <div>
+                        <div id="div1">
                             <p><a href="https://www.cols-cyclisme.com/">Col-Cyclisme</a>   Les montées près de chez vous</p>
                         </div>
-                        <div>
+                        <div id="div2">
                             <p><a href="https://www.eau-cyclisme.com/">Eau-Cyclisme</a>    La carte des points d'eau pour vos sorties cyclistes</p>
                         </div>
                     </ul>

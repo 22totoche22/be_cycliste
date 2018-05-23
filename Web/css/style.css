@@ -38,6 +38,7 @@ body
      color: #fff;
      line-height: 1.65em;
      font-size: 18px;
+     text-align: center;
 
   }
 
@@ -136,8 +137,27 @@ color: #fff;
 
 section#liens
 {
-margin-left: 100px;
+margin-left: 50px;
 }
+
+section#liens h4
+{
+font-size: 15px
+}
+
+section#liens div1
+{
+float: left;
+font-size: 12px
+}
+
+section#liens div2
+{
+float: right;
+font-size: 12px
+
+}
+
 
 
 div.search input
@@ -166,60 +186,8 @@ color: blue;
   	    width:100%;
 	    color: #fff;
   	    text-align: center;
-        position:absolute;
+        position: bottom
         bottom:0;
     }
-
-/********************************************************************************
- CV
-********************************************************************************/
-
-
-section#vergnes
-{
-margin-left: 100px;
-}
-
-h31
-{
-color : #ff0000
-text-transform: uppercase
-border-bottom: 100px solid #e5e5e5;
-margin-left: 100px;
-}
-
-sectionCV
-{
-margin-bottom: 100px;
-text-align: justify;
-}
-
-titreCV
-{
-font-weight: bold;
-font-size: 20px;
-}
-
-CV
-{
-width: 700px;
-font-size: 16px;
-
-}
-
-infoCV
-{
-float : left
-}
-
-photoCV
-{
-float : right
-}
-
-enteteCV
-{
-height: 250px;
-}
 
 
