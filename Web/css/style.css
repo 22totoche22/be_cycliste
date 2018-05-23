@@ -92,13 +92,14 @@ margin-top: 20px;
 text-align: center;
 }
 
-    section article#menu
-    {
-
-    text-align: right;
-    margin: 5px 5px;
-
-    }
+#menu
+{
+text-align: right;
+margin: 5px 5px;
+background: linear-gradient: #000, #555
+width:100%;
+color: #fff;
+}
 
 	section h2
 	{
@@ -131,6 +132,7 @@ text-align: center;
         section#connecter
         {
             margin:0;
+            text-align: center;
         }
 
 section#liens
@@ -161,12 +163,10 @@ color: blue;
 ********************************************************************************/
 #footer
     {
-  	    background-linear: #000;
+  	    background: linear-gradient: #000, #555
   	    width:100%;
 	    color: #fff;
-
   	    text-align: center;
-
     }
 
 /********************************************************************************

@@ -87,8 +87,8 @@ def titre(intitule='', paragraphe=0):
 
     titre+='''
     <hr></hr>
-            <hr></hr>
-            <hr></hr>
+    <hr></hr>
+    <hr></hr>
     <h1>'''+intitule+'''</h1>
     </header>
         '''
@@ -102,9 +102,10 @@ def titre(intitule='', paragraphe=0):
     if "login" in Session():
           titre+="<p>Bonjour "+Session()["surnom"]+"</p>"
 
-    titre+='''<hr></hr>
-            <hr></hr>
-            <hr></hr>
+    titre+='''
+    <hr></hr>
+    <hr></hr>
+    <hr></hr>
     <h1>''' + intitule + '''</h1>
     </header>
         '''
@@ -114,13 +115,9 @@ def titre(intitule='', paragraphe=0):
 
 def footer(chemin=''):
     footer = '''
-    <nav>
-        <ul>
-            <div id="footer">
+            <footer id="footer">
             <p> &copy; Tout droits reservés &copy;</p>
-            </div>
-        </ul>
-    </nav>
+            </footer>
                 
             
         '''
