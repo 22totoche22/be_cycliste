@@ -80,6 +80,13 @@ def carte():
           id_incident.value ='';'''
     vcarte+= '''     
           var previousMarker;
+          var date = new Date();
+          var jour = date.getDate();
+          var mois = date.getMonth();
+          var annee = date.getYear();
+          var datebis = String(jour)+'/'+String(mois+1)+'/'+String(annee+1900)
+          var date_1 = document.getElementById("date1");
+          date_1.value = datebis;
           var listepoints = '''+str(affiche_incident())+'''
           var i=0;
           li='''+str(len(affiche_incident()))+''';
@@ -96,7 +103,7 @@ def carte():
               var content = '<div id="infowindow">'+
             '<h1 id="firstHeading" class="firstHeading">'+cat[idcat][2]+'</h1>'+
             '<div id="bodyContent">'+
-            '<p><b>'+cat[idcat][1]+'</b> : '+listepoints[i][2]+' </p>'+
+            '<p><b>'+cat[idcat][1]+'</b> : '+listepoints[i][2]+' </p>'+ 'déclaré le '+listepoints[i][6]+
             '</div>'+
             '</div>';
               previousmarker = marker;
@@ -153,6 +160,7 @@ jquery.min.js"></script>
             <form id="floating_panel" method="POST" action = "fcloturer" enctype="multipart/form-data">
                 <label class="" >idIncident : </label> <input id="id_incident" type="text" name="idincident" value="" required data-readonly>
                 <label class="" >raison de la cloture : </label> <input id="raison_clot" type="text" name="raisoncloture" placeholder="réparé,fini..." value="" required >
+               <input id="date1" type="text" name="date" value="" hidden>
                <input  type="submit"  value="cloturer">
                </form>'''
 
@@ -170,9 +178,9 @@ def affiche_incident():
     liste = bdd.affichincident()
     liste_1 = []
 
-    for (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture,idIncident) in liste:
+    for (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture,idIncident,date,datecloture) in liste:
         if not cloture:
-            liste_1.append([latitude.decode(),longitude.decode(),description.decode(),str(idSousCategorie), niveauUrgence.decode(),str(idIncident)])
+            liste_1.append([latitude.decode(),longitude.decode(),description.decode(),str(idSousCategorie), niveauUrgence.decode(),str(idIncident),date.decode()])
 
     return liste_1
 
@@ -185,12 +193,12 @@ def affiche_categorie():
 
     return liste_2
 
-def fcloturer(idincident='', raisoncloture=''):
+def fcloturer(idincident='', raisoncloture='',date=''):
     result = template.entete(chemin)
     result += template.menu(chemin)
     result += template.titre("Cloture",0)
     result += "<section>"
-    msg = bdd.cloturincident(idincident, raisoncloture)
+    msg = bdd.cloturincident(idincident, raisoncloture,date)
     if msg is None:
         result += "<div>L'incident a été cloturé</div>"
     result += "</section>"

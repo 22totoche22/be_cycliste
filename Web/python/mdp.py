@@ -2,6 +2,7 @@ conf=Import('../data/config.py')
 bdd=Import('../data/bdd.py')
 template=Import('template.py')
 chemin = conf.chemin()
+import smtplib
 
 
 def index(essai=''):
@@ -85,7 +86,7 @@ def affiche_pwd():
     return list_mail,list_pwd
 
 def envoie_mdp(email,mdp):
-    import smtplib
+
 
     TO = email
     SUBJECT = 'Votre mot de passe'
