@@ -26,6 +26,10 @@ def gestion_utili():
         background : white;
         width : 50%;
         margin : auto;
+        text_align : center;
+        }
+        #lala{
+       margin-left : 20px;
         }
         input[data-readonly] {
   pointer-events: none;
@@ -49,6 +53,8 @@ def gestion_utili():
                         <th data-field="col8" data-sortable="true">idUtilisateur</th>
                         <th data-field="col10" data-sortable="true">idSouscategorie</th>
                         <th data-field="col11" data-sortable="true">lieu</th>
+                        <th data-field="col12" data-sortable="true">date</th>
+                        <th data-field="col12" data-sortable="true">date cloture</th>
                     </tr>
                 </thead>
           </table>
@@ -99,8 +105,13 @@ def gestion_utili():
 def affiche_tout_incident():
     result = []
     liste = bdd. affichincident()
-    for (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture, idIncident) in liste:
-        result.append([str(idIncident),niveauUrgence.decode(), description.decode(), str(cloture), str(idUtilisateur), str(idSousCategorie), lieu.decode()])
+    for (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture, idIncident,date,datecloture) in liste:
+        if str(datecloture) == "None":
+            clot = str(datecloture)
+        else:
+            clot = datecloture.decode()
+
+        result.append([str(idIncident),niveauUrgence.decode(), description.decode(), str(cloture), str(idUtilisateur), str(idSousCategorie), lieu.decode(),date.decode(),clot])
     return result
 
 def fsupprimer(idincident=''):

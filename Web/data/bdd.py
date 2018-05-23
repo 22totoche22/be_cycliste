@@ -52,11 +52,11 @@ def verif_connect(login='', pwd=''):
 # insertion dans la table incidents
 
 
-def insertincident(lat="", long="", adresse="", description="",categorie=None,niveau=None) :
+def insertincident(lat="", long="", adresse="", description="",categorie=None,niveau=None, date="") :
 
 
-    sql = "INSERT INTO Incident (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu) VALUES (%s, %s, %s, %s, %s, %s, %s);"
-    param = (niveau, description, long, lat, Session()["id"], categorie, adresse)
+    sql = "INSERT INTO Incident (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s);"
+    param = (niveau, description, long, lat, Session()["id"], categorie, adresse, date)
 
     try :
         cnx=connexion()
@@ -76,7 +76,7 @@ def insertincident(lat="", long="", adresse="", description="",categorie=None,ni
 
 
 def affichincident():
-    sql = "SELECT niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture, idIncident FROM Incident;"
+    sql = "SELECT niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture, idIncident,date,datecloture FROM Incident;"
 
     try:
         cnx = connexion()
@@ -196,9 +196,9 @@ def recup_categorie():
         close_bd(cursor, cnx)
     return liste
 
-def cloturincident(idincident, raisoncloture):
-    sql = "UPDATE Incident SET cloture=1, raisoncloture=%s, idUtilisateurcloture=%s where idIncident=%s;"
-    param = (raisoncloture,Session()["id"],idincident)
+def cloturincident(idincident, raisoncloture,date):
+    sql = "UPDATE Incident SET cloture=1, raisoncloture=%s, idUtilisateurcloture=%s, datecloture=%s where idIncident=%s;"
+    param = (raisoncloture,Session()["id"],date,idincident)
     try:
         cnx = connexion()
         cursor = cnx.cursor(prepared=True)
@@ -324,12 +324,12 @@ def aff_analy():
     return liste_
 
 def suppincident(idincident):
-    sql = "DELETE FROM Incident WHERE idIncident = %s;"
-    param = (idincident)
+    sql = "DELETE FROM Incident WHERE idIncident = "+idincident+";"
+    param = (int(idincident))
     try:
         cnx = connexion()
         cursor = cnx.cursor(prepared=True)
-        results = cursor.execute(sql, param)
+        results = cursor.execute(sql)
         msg = results
         cnx.commit()
     except mysql.connector.Error as err:
@@ -371,6 +371,21 @@ def secteurincident():
 
 def communeincident():
     sql = "SELECT Commune.nom, COUNT(idIncident),SUM(cloture) FROM Incident JOIN Quartier ON Incident.lieu = Quartier.nom JOIN Commune ON Commune.idCommune = Quartier.idCommune GROUP BY Commune.idCommune;"
+    param = ()
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def categorieincident():
+    sql = "SELECT count(idIncident),Categorie.nomCategorie FROM Incident JOIN sousCategorie on Incident.idSousCategorie = sousCategorie.idSousCategorie JOIN Categorie ON Categorie.idCategorie = sousCategorie.idCategorie GROUP BY Categorie.idCategorie"
     param = ()
     try:
         cnx = connexion()

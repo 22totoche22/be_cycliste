@@ -36,7 +36,7 @@ def statistiques():
             </div>
             <div class="col-12 col-md-6 col-sm-6" >
             <form id="fpanel" method="POST" action = "fselectnbincident" enctype="multipart/form-data">
-                <label class="" >quartier/petite commune : </label> <input id="quartier" type="text" name="quartier" value="" onkeyup="count()" placeholder="Capitole, Arnaud Bernard... Merci de respecter la syntaxe">
+                <label class="" >quartier/petite commune : </label> <input id="quartier" type="text" name="quartier" value="" onkeyup="count()" placeholder="Capitole de Toulouse, Arnaud Bernard... Merci de respecter la syntaxe">
                 <label class="" >secteur : </label><input id="secteur" type="text" name="secteur" value="" onkeyup="countbis()" placeholder="1.1, 1.2, 4.1 ..." >
                 <label class="" >Grande commune : </label><input id="commune" type="text" name="secteur" value="" onkeyup="countbisbis()" placeholder="Toulouse..." >
                </form>
@@ -44,10 +44,12 @@ def statistiques():
             </div>
     
     <div id="chart" class="row">
-    <div class="col-12 col-md-6 col-sm-6" >
+    <div class="col-12 col-md-4 col-sm-6" >
         <canvas id="myChart"></canvas></div>
-        <div class="col-12 col-md-6 col-sm-6" >
+        <div class="col-12 col-md-4 col-sm-6" >
         <canvas id="my_Chart"></canvas></div>
+        <div class="col-12 col-md-4 col-sm-6" >
+        <canvas id="my__Chart"></canvas></div>
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -73,9 +75,40 @@ def statistiques():
             }
     </script>
     <script>
+    function cat(){
+        liste = '''+str(catincident())+''';
+        var li = '''+str(len(catincident()))+''';
+        result1 =[];
+        result2 =[];
+        var i =0;
+        while(i<li){
+            result1.push(liste[i][1]);
+            result2.push(liste[i][0]);
+            i++;
+        }
+        console.log(result1);
+        var ctx = document.getElementById("my__Chart").getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: result1,
+                        datasets: [{
+                            label: "Nombre total d'incidents par catégorie dans Toulouse",
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: result2,
+                        }]
+                    },
+                    options: {}
+                 });
+        
+    }
+    
+    
     function count(){
         liste = '''+str(selectbincident())+''';
         var li = '''+str(len(selectbincident()))+''';
+
         var i =0;
         var j=0;
         while(i<li){
@@ -86,6 +119,7 @@ def statistiques():
         }
         choose("myChart",result[0],"nombre d'incidents dans le quartier",quartier.value);
         choose("my_Chart",result[1]/result[0]*100,"taux cloture",quartier.value);
+        cat();
     }
     function countbis(){
         liste = '''+str(secteurincident())+''';
@@ -100,6 +134,7 @@ def statistiques():
         }
         choose("myChart",result[0],"nombre d'incidents dans le secteur",secteur.value);
         choose("my_Chart",result[1]/result[0]*100,"taux cloture",secteur.value);
+        cat();
         }
         function countbisbis(){
         liste = '''+str(communeincident())+''';
@@ -114,6 +149,7 @@ def statistiques():
         }
         choose("myChart",result[0],"nombre d'incidents dans la commune",commune.value);
         choose("my_Chart",result[1]/result[0]*100,"taux cloture",commune.value);
+        cat();
         }
     </script>
 
@@ -144,9 +180,18 @@ def secteurincident():
         result.append([secteur.decode(),str(nbcree),nbclot.decode()])
     return result
 
+
+
 def communeincident():
     result = []
     liste = bdd.communeincident()
-    for (commune, nbcree, nbclot) in liste:
-        result.append([commune.decode(), str(nbcree), nbclot.decode()])
+    for (commune,nbcree,nbclot) in liste:
+        result.append([commune.decode(), str(nbcree),nbclot.decode()])
+    return result
+
+def catincident():
+    result = []
+    liste = bdd.categorieincident()
+    for (nb,nom) in liste:
+        result.append([str(nb),nom.decode()])
     return result

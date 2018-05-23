@@ -72,6 +72,7 @@ def carte():
         <label class="" >Longitude : </label> <input id=longitude type="text" name="longitude" value="" required data-readonly>
         <label class="" >Quartier : </label> <input id=adresse type="text" name="adresse" value="" required data-readonly></li>
         <input id=ville type="text" name="ville" value="" hidden>
+        <input id="date" type="text" name="date" value="" hidden>
         <li><label class="" > Description de l'incident</label>
         <li><textarea id = "description_inci" name="Description" placeholder="Décrivez l'incident"></textarea></li>
         <li><label class="" >Catégorie </label>
@@ -133,6 +134,13 @@ def carte():
       var longitude = document.getElementById("longitude");
       var adresse = document.getElementById("adresse");
       var ville = document.getElementById("ville");
+      var date = new Date();
+      var jour = date.getDate();
+      var mois = date.getMonth();
+      var annee = date.getYear();
+      var datebis = String(jour)+'/'+String(mois+1)+'/'+String(annee+1900)
+      var date_1 = document.getElementById("date");
+      date_1.value = datebis;
       function placeMarker(location, map,geocoder) {
                     adresse.value = "";
                     ville.value = "";
@@ -199,12 +207,12 @@ jquery.min.js"></script>
 #         result += "<br /> niveau :" + Niveau
 #         return result
 
-def fenvoyer(latitude='', longitude='', adresse='',ville='', Categorie='',Description='',Niveau=''):
+def fenvoyer(latitude='', longitude='', adresse='',ville='', date='',Categorie='',Description='',Niveau=''):
     result = template.entete(chemin)
     result += template.menu(chemin)
     result += template.titre("Incident",0)
     result += "<section>"
-    msg = bdd.insertincident(latitude, longitude, adresse, Description, Categorie, Niveau)
+    msg = bdd.insertincident(latitude, longitude, adresse, Description, Categorie, Niveau,date)
     if msg is None:
         result += "<div>L'incident a été enregistré</div>"
     #result += "<div class='comm'>Liste des incidents enregistrés dans la base de données</div>"
