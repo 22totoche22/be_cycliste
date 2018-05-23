@@ -75,28 +75,40 @@ def menu(chemin=''):
 
     return menu
 
-def nom():
-    vnom=''' <hr></hr>
-            <hr></hr>
-            <hr></hr>'''
-    if "login" in Session():
-          vnom+="<p>Bonjour "+Session()["surnom"]+"</p>"
-
-    return vnom
 
 def titre(intitule='', paragraphe=0):
     titre = '''
         <header id="top2">
-                <h1>'''+intitule+'''</h1>
-         </header>
+                
+                '''
+
+    if "login" in Session():
+          titre+="<p>Bonjour "+Session()["surnom"]+"</p>"
+
+    titre+='''
+    <hr></hr>
+            <hr></hr>
+            <hr></hr>
+    <h1>'''+intitule+'''</h1>
+    </header>
         '''
 
     if paragraphe==1:
         titre = '''
             <header>
-                    <h1>''' + intitule + '''</h1>
-             </header>
-            '''
+                    
+             '''
+
+    if "login" in Session():
+          titre+="<p>Bonjour "+Session()["surnom"]+"</p>"
+
+    titre+='''<hr></hr>
+            <hr></hr>
+            <hr></hr>
+    <h1>''' + intitule + '''</h1>
+    </header>
+        '''
+
     return titre
 
 

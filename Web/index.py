@@ -6,7 +6,6 @@ bdd=Import('../data/bdd.py')
 def index():
     result = template.entete(chemin)
     result += template.menu(chemin)
-    result += template.nom()
     result += template.titre("Incidents Cyclistes",1)
     result += corps()
     result += liens()
