@@ -18,7 +18,7 @@ def menu(chemin=''):
     menu='''
     <nav>
         <ul>
-        <article id="enteteConnecter">
+        <article id="enteteConnecter" class="background-color: #000">
         <li>
         '''
 
@@ -52,7 +52,7 @@ def menu(chemin=''):
     menu+='''
             </li>
             </article>
-            <article id="enteteMenu">
+            <article id="enteteMenu" class="background-color: #000">
             <li>
                 <a href="'''+chemin+'''/python/createurs.py">
                     Créateurs
