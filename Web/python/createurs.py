@@ -20,7 +20,7 @@ def createurs():
                         <div>
                             <a href="''' + chemin + '''/python/caillet.py">
                             <h3>Adrien Caillet</h3>
-                            <img src="'''+chemin+'''/images/fond.jpg" alt="adrien" title="Adrien Caillet"/>
+                            <img src="'''+chemin+'''/images/adrien2.jpg" alt="adrien" title="Adrien Caillet"/>
                             </a>
                         </div>
                     </article>
@@ -31,7 +31,7 @@ def createurs():
                         <div>
                             <a href="''' + chemin + '''/python/denis.py">
                             <h3>Allan Denis</h3>
-                            <img src="'''+chemin+'''/images/fond.jpg" alt="allan" title="Allan Denis"/>
+                            <img src="'''+chemin+'''/images/allan2.jpg" alt="allan" title="Allan Denis"/>
                             </a>
                         </div>
                     </article>
@@ -42,7 +42,7 @@ def createurs():
                         <div>
                             <a href="''' + chemin + '''/python/petit.py">
                             <h3>Matthias Petit</h3>
-                            <img src="'''+chemin+'''/images/fond.jpg" alt="matthias" title="Matthias Petit"/>
+                            <img src="'''+chemin+'''/images/matthias.jpg" alt="matthias" title="Matthias Petit"/>
                             </a>
                         </div>
                     </article>
@@ -53,7 +53,7 @@ def createurs():
                         <div>
                             <a href="''' + chemin + '''/python/vergnes.py">
                             <h3>Armand Vergnes</h3>
-                            <img src="'''+chemin+'''/images/fond.jpg" alt="armand" title="Armand Vergnes"/>
+                            <img src="'''+chemin+'''/images/armand.jpg" alt="armand" title="Armand Vergnes"/>
                             </a>
                         </div>
                     </article>
