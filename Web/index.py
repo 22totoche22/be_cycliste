@@ -6,6 +6,7 @@ bdd=Import('../data/bdd.py')
 def index():
     result = template.entete(chemin)
     result += template.menu(chemin)
+    result += template.nom()
     result += template.titre("Incidents Cyclistes",1)
     result += corps()
     result += liens()
@@ -65,6 +66,43 @@ def corps():
                         </div>
                     </article>
                 </div>'''
+    else:
+        vcorps += '''
+                <section id="corps">
+
+            <div class="row">
+                <div class="col-18 col-md-6 col-sm-9" >
+                    <article>
+                        <div>'''
+    if "login" in Session():
+               vcorps += '''             <a href="'''+chemin+'''/python/saisieCarte.py">'''
+    else:
+                vcorps += '''<a href="''' + chemin + '''/python/connecter.py">'''
+
+    vcorps += '''                      
+       <h3>Incidents</h3>
+       <img src="''' + chemin + '''/images/incident.jpg">
+                            </a>
+                            <p>Reporter un incident</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-18 col-md-6 col-sm-9" >
+
+                    <article>
+                        <div>
+                            <a href="''' + chemin + '''/python/carte.py">
+                            <h3>Carte</h3>
+                            <img src="''' + chemin + '''/images/carte.jpg">
+                            </a>        
+                            <p>Carte des incidents cyclistes dans la région toulousaine</p>
+                            
+                        </div>
+
+                    </article>
+                </div>'''
+
     vcorps +='''
             </div>
         </section>

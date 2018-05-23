@@ -73,12 +73,14 @@ def menu(chemin=''):
     </nav>
    '''
 
-    if "login" in Session():
-          menu+="<div>Bonjour "+Session()["surnom"]+"</div>"
-
-
     return menu
 
+def nom():
+    vnom=''' '''
+    if "login" in Session():
+          vnom +="<p>Bonjour "+Session()["surnom"]+"</p>"
+
+    return vnom
 
 def titre(intitule='', paragraphe=0):
     titre = '''
