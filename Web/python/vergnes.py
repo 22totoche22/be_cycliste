@@ -79,7 +79,6 @@ strong{
 h2{
     font-size : 28px;
     color : red;
-    text-transform : uppercase;
     border-bottom : 3px solid red;
 }
 

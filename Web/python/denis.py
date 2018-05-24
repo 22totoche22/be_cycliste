@@ -16,9 +16,7 @@ def denis():
     vdenis = '''
 
     <style>
-      ..page{
-    width : 780px;
-    margin : auto;
+    .page{
     font-size : 16px;
     font-family : Calibri;
 }
@@ -26,10 +24,6 @@ def denis():
 body{
      background-image: linear-gradient(to right, green, blue);
     color : white;
-}
-
-.photo{
-    margin-top : 200px;
 }
 
 #image{
@@ -58,8 +52,7 @@ section{
 }
 
 .sec-droite{
-    margin : auto;
-    text-align : left;
+   text-align : left;
 }
 
 .sec-gauche-main{
@@ -81,16 +74,17 @@ section{
 
 
 .photo{
-    margin-left : 100px;
-    margin-bottom : 100px;
+    margin-bottom : 250px;
     margin-top : 0px;
+    margin-left : 50px;
+    width : 50px;
 }
 
 h2{
     font-size : 28px;
     color : red;
-    text-transform : uppercase;
     border-bottom : 3px solid red;
+    margin : auto;
 }
 
 h3{
@@ -116,22 +110,22 @@ h3{
 
 #sec-gauche-4{
     margin-top : 0px;
-    margin-bottom : 80px;
+    margin-bottom : 40px;
 }
 
 #sec-gauche-5{
-    margin-bottom : 20px;
+    margin-bottom : 45px;
     margin-top : 0px;
 }
 
 #sec-gauche-6{
     margin-top : 0px;
-    margin-bottom : 40px;
+    margin-bottom : 80px;
 }
 
 #sec-gauche-7{
     margin-top : 0px;
-    margin-bottom : 20px;
+    margin-bottom : 15px;
 }
 
 #sec-gauche-8{
@@ -150,8 +144,8 @@ h3{
 
     <body>
 
-          <div class = "photo">
-                    <img src = "''' + chemin + '''/images/allan2.jpg" width = 150>
+          <div class = "photo" width = 150>
+                    <img src = "''' + chemin + '''/images/allan2.jpg" width = 150, align = left>
                 </div>
 
         <div class = "page">
@@ -165,15 +159,7 @@ h3{
                 <p>Français</p>
                 <p>Permis B - Permis côtier</p>
                 <p>Mobilité : Toute la France</p>
-                <hr/>
-                <br/>
-                <hr/>
-                <br/>
-                <hr/>
-
-
-
-                </div>
+            </div>
 
             <div class = "sec-droite-main">
 

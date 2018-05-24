@@ -67,7 +67,7 @@ section{
 
 .sec-droite{
     margin-top : 0px;
-    text-align : justify;
+    text-align : left;
 }
 
 strong{
@@ -79,7 +79,6 @@ strong{
 h2{
     font-size : 28px;
     color : red;
-    text-transform : uppercase;
     border-bottom : 3px solid red;
 }
 
