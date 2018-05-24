@@ -105,13 +105,16 @@ def gestion_utili():
 def affiche_tout_incident():
     result = []
     liste = bdd. affichincident()
-    for (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture, idIncident,date,datecloture) in liste:
-        if str(datecloture) == "None":
-            clot = str(datecloture)
-        else:
-            clot = datecloture.decode()
+    if not liste == []:
+        for (niveauUrgence, description, longitude, latitude, idUtilisateur, idSousCategorie, lieu, cloture, idIncident,date,datecloture) in liste:
+            if str(datecloture) == "None":
+                clot = str(datecloture)
+            else:
+                clot = datecloture.decode()
 
-        result.append([str(idIncident),niveauUrgence.decode(), description.decode(), str(cloture), str(idUtilisateur), str(idSousCategorie), lieu.decode(),date.decode(),clot])
+            result.append([str(idIncident),niveauUrgence.decode(), description.decode(), str(cloture), str(idUtilisateur), str(idSousCategorie), lieu.decode(),date.decode(),clot])
+    else: result = [[]]
+
     return result
 
 def fsupprimer(idincident=''):

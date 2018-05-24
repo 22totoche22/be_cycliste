@@ -78,15 +78,19 @@ def carte():
             
           
           id_incident.value ='';'''
+
+
     vcarte+= '''     
           var previousMarker;
           var date = new Date();
           var jour = date.getDate();
           var mois = date.getMonth();
           var annee = date.getYear();
-          var datebis = String(jour)+'/'+String(mois+1)+'/'+String(annee+1900)
-          var date_1 = document.getElementById("date1");
-          date_1.value = datebis;
+          var datebis = String(jour)+'/'+String(mois+1)+'/'+String(annee+1900);
+     '''
+    if "login" in Session():
+        vcarte +='''document.getElementById("date1").value = datebis;'''
+    vcarte+='''
           var listepoints = '''+str(affiche_incident())+'''
           var i=0;
           li='''+str(len(affiche_incident()))+''';

@@ -398,3 +398,33 @@ def categorieincident():
     finally:
         close_bd(cursor, cnx)
     return liste
+
+def test():
+    sql = "SELECT idIncident,lieu,Categorie.nomCategorie FROM Incident JOIN sousCategorie on Incident.idSousCategorie = sousCategorie.idSousCategorie JOIN Categorie ON Categorie.idCategorie = sousCategorie.idCategorie "
+    param = ()
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste
+
+def testsecteur():
+    sql = "SELECT idIncident, idSecteur, Categorie.nomCategorie FROM Incident JOIN Quartier ON Incident.lieu = Quartier.nom JOIN sousCategorie on Incident.idSousCategorie = sousCategorie.idSousCategorie JOIN Categorie ON Categorie.idCategorie = sousCategorie.idCategorie"
+    param = ()
+    try:
+        cnx = connexion()
+        cursor = cnx.cursor(prepared=True)
+        results = cursor.execute(sql)
+        liste = list(cursor)
+    except mysql.connector.Error as err:
+        liste = "Failed select table test: {}".format(err)
+        exit(1)
+    finally:
+        close_bd(cursor, cnx)
+    return liste

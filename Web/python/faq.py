@@ -12,9 +12,14 @@ def index():
 
 def faq():
     vfaq = '''
+        <style>
+        iframe{
+        border:inherit}
+        </style>
+        
         <section id="faq">
         
-        <iframe src = "''' + chemin + '''/images/tutoriel.mp4"></iframe>
+        <iframe width="1024" height="768"  src = "''' + chemin + '''/images/tutoriel.mp4"></iframe>
         
         </section>
     '''

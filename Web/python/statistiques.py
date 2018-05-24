@@ -70,7 +70,13 @@ def statistiques():
                             data: [liste],
                         }]
                     },
-                    options: {}
+                    options: {scales: {
+  yAxes: [{
+    ticks: {
+     suggestedMin: 0
+     }
+   }]
+  }}
                  });
             }
     </script>
@@ -86,24 +92,141 @@ def statistiques():
             result2.push(liste[i][0]);
             i++;
         }
-        console.log(result1);
         var ctx = document.getElementById("my__Chart").getContext('2d');
                 var chart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: result1,
                         datasets: [{
-                            label: "Nombre total d'incidents par catégorie dans Toulouse",
+                            label: "Nombre total d'incidents par catégorie au total",
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
                             data: result2,
                         }]
                     },
-                    options: {}
+                    options: {scales: {
+  yAxes: [{
+    ticks: {
+     suggestedMin: 0
+     }
+   }]
+  }}
                  });
         
     }
     
+    function test(valeur){
+        liste = '''+str(ftest())+''';
+        var li = '''+str(len(ftest()))+''';
+        result1 =[];
+        result2 =[];
+        var result3=[];
+        var i =0;
+        var compte = 0;
+        while(i<li){
+        if (valeur == liste[i][1]){
+                
+                result1.push(liste[i][2])
+                }
+         
+            i++;
+        }
+        console.log(result1)
+        var j =0;
+        var k = result1.length
+
+
+        while (j<k){
+            if (result2.includes(result1[j])){
+                console.log('lol')
+                result3[result2.indexOf(result1[j])]++;
+            }
+            else{result2.push(result1[j]);
+            result3.push(1);
+            
+            }
+        j++;
+        }
+        
+        var ctx = document.getElementById("my__Chart").getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: result2,
+                        datasets: [{
+                            label: "Nombre 'incidents par catégorie ",
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: result3,
+                            ticks: { min: 0}
+                        }]
+                    },
+                    options: {scales: {
+  yAxes: [{
+    ticks: {
+     suggestedMin: 0
+     }
+   }]
+  }}
+                 });
+      
+    }
+    
+    function testsecteur(valeur){
+        liste = '''+str(ftestsecteur())+''';
+        var li = '''+str(len(ftestsecteur()))+''';
+        result1 =[];
+        result2 =[];
+        var result3=[];
+        var i =0;
+        var compte = 0;
+        while(i<li){
+        if (valeur == liste[i][1]){
+                
+                result1.push(liste[i][2])
+                }
+         
+            i++;
+        }
+        console.log(result1)
+        var j =0;
+        var k = result1.length
+
+
+        while (j<k){
+            if (result2.includes(result1[j])){
+                console.log('lol')
+                result3[result2.indexOf(result1[j])]++;
+            }
+            else{result2.push(result1[j]);
+            result3.push(1);
+            
+            }
+        j++;
+        }
+        
+        var ctx = document.getElementById("my__Chart").getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: result2,
+                        datasets: [{
+                            label: "Nombre 'incidents par catégorie ",
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: result3,
+                        }]
+                    },
+                    options: {scales: {
+  yAxes: [{
+    ticks: {
+     suggestedMin: 0
+     }
+   }]
+  }}
+                 });
+      
+    }
     
     function count(){
         liste = '''+str(selectbincident())+''';
@@ -118,8 +241,8 @@ def statistiques():
             i++;
         }
         choose("myChart",result[0],"nombre d'incidents dans le quartier",quartier.value);
-        choose("my_Chart",result[1]/result[0]*100,"taux cloture",quartier.value);
-        cat();
+        choose("my_Chart",result[1]/result[0]*100,"taux cloture en %",quartier.value);
+        test(quartier.value);
     }
     function countbis(){
         liste = '''+str(secteurincident())+''';
@@ -134,7 +257,7 @@ def statistiques():
         }
         choose("myChart",result[0],"nombre d'incidents dans le secteur",secteur.value);
         choose("my_Chart",result[1]/result[0]*100,"taux cloture",secteur.value);
-        cat();
+        testsecteur(secteur.value);
         }
         function countbisbis(){
         liste = '''+str(communeincident())+''';
@@ -194,4 +317,19 @@ def catincident():
     liste = bdd.categorieincident()
     for (nb,nom) in liste:
         result.append([str(nb),nom.decode()])
+    return result
+
+
+def ftest():
+    result = []
+    liste = bdd.test()
+    for (id,lieu,nom) in liste:
+        result.append([str(id),lieu.decode(),nom.decode()])
+    return result
+
+def ftestsecteur():
+    result = []
+    liste = bdd.testsecteur()
+    for (id, secteur,nom) in liste:
+        result.append([str(id), secteur.decode(), nom.decode()])
     return result
