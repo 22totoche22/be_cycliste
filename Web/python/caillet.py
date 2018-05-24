@@ -28,8 +28,6 @@ body{
 
 #presentation{
     border : 3px solid red;
-    margin-left : 100px;
-    margin-top : 20px;
     font-size : 20px;
     color : red;
 }
@@ -41,6 +39,7 @@ body{
 .info{
     float : left;
     color : black;
+    text-align : justify;
 }
 
 .photo{
@@ -49,7 +48,7 @@ body{
 
 section{
     margin-bottom : 70px;
-    text-align = justify
+    text-align = justify;
 }
 
 .sec-gauche{
@@ -57,11 +56,13 @@ section{
     font-weight : bold;
     font-size : 20px;
     font-style : italic;
+    text-align : left;
 }
 
 .sec-droite{
     margin-left : 150px;
     margin-top : 0px;
+    text-align : left;
 }
 
 strong{
@@ -177,7 +178,7 @@ h3{
                     <p><h3>Membre actif du club robotique de l'ENAC</h3>
                     Paricipation à la coupe de France de robotique<br/>
                     Réalisation du robot secondaire pour la coupe<br/>
-                        Responsable intégration;</p>
+                    Responsable intégration;</p>
                     <p><h3>Trésorier d'ENVOL, Junior Entreprise de l'ENAC</h3>
                     Gestion des fonds de l'association, des déclaratifs sociaux et fiscaux<br/>
                     Edition des factures et bulletins de versement;</p>

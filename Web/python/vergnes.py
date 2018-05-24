@@ -34,6 +34,7 @@ body{
     margin-top : 20px;
     font-size : 20px;
     color : red;
+    text-align : justify;
 }
 
 .infophoto{
@@ -60,11 +61,13 @@ section{
     font-size : 20px;
     font-style : italic;
     margin-right : 25px;
+    text-align : left;
 }
 
 .sec-droite{
     margin-left : 150px;
     margin-top : 0px;
+    text-align : left;
 }
 
 strong{

@@ -41,7 +41,9 @@ body{
 
 .info{
     float : left;
+    margin : auto;
     color : white;
+    text-align : justify;
 }
 
 .photo{
@@ -64,8 +66,8 @@ section{
 }
 
 .sec-droite{
-    margin-left : 150px;
     margin-top : 0px;
+    text-align : justify;
 }
 
 strong{

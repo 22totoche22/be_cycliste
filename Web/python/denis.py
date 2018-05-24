@@ -54,11 +54,12 @@ section{
     font-style : italic;
     width : 200px;
     margin-right : 25px;
+    text-align : left;
 }
 
 .sec-droite{
-    margin-left : 50px;
-    margin-top : 0px;
+    margin : auto;
+    text-align : left;
 }
 
 .sec-gauche-main{
@@ -67,6 +68,7 @@ section{
     font-style : italic;
     font-size : 20px;
     width : 100px;
+    text-align : left;
 }
 
 
