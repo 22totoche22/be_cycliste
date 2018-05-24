@@ -5,7 +5,7 @@ chemin = conf.chemin()
 def index():
     result = template.entete(chemin)
     result += template.menu(chemin)
-    result += template.titre("FAQ", 0)
+    result += template.titre("Manuel d'utilisation", 0)
     result += faq()
     result += template.footer(chemin)
     return result
@@ -13,10 +13,8 @@ def index():
 def faq():
     vfaq = '''
         <section id="faq">
-        <h1>Comment est votre blanquette ?</h1>
-        <p>La blanquette est bonne<p>
-        <h1>On me dit le plus grand bien de vos harengs-pomme à l'huile </h1>
-        <p>Le patron vous en apportera un ramequin, vous vous ferez une idée<p>
+        
+        <iframe src = "''' + chemin + '''/images/tutoriel.mp4"></iframe>
         
         </section>
     '''
